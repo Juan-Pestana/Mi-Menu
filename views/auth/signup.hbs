@@ -1,19 +1,44 @@
-<h2>Signup</h2>
+<div class="container">
 
-<form action="/signup" method="POST">
-    <label for="username">Username</label>
-    <input type="text" name="username" placeholder="Your name">
-    <br><br>
-    <label for="password">Password</label>
-    <input type="password" name="password" placeholder="Your password">
 
-    {{#if message}}
-    <p style="color: red">{{ message }}</p>
-    {{/if}}
+    <div class="center-form">
+    <h2>Registate</h2>
 
-    <br><br>
+        <form action="/auth/user-signup" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class='form-control' name="name" placeholder="Name">
 
-    <button>Create account</button>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class='form-control' name="username" placeholder="Userame">
 
-    <p>Do you already have an account?<a href="/login">Login</a></p>
-</form>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" class='form-control' name="password" placeholder="Password">
+
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class='form-control' name="email" placeholder="Email">
+
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefono</label>
+                <input type="number" class='form-control' name="phone" placeholder="Telefono">
+
+            </div>
+
+            {{#if message}}
+            <p style="color: red">{{ message }}</p>
+            {{/if}}
+
+
+            <button class='btn btn-primary'>Registrar</button>
+
+            <p>Ya tienes cuenta???<a href="/login">Inicia sesion</a></p>
+        </form>
+    </div>
+</div>
