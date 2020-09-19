@@ -1,6 +1,5 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
-
 const userSchema = new Schema({
     name: {
         type: String,
@@ -23,15 +22,15 @@ const userSchema = new Schema({
         type: Number,
         required: true,
     },
-    location: {
-        type: {
-            type: String
-        },
-        coordinates: [Number]
-    },
+    // location: {
+    //     type: {
+    //         type: String
+    //     },
+    //     coordinates: [Number]
+    // },
     favRestaurants: {
         type: [String],
-        required: true,
+
     },
     // role: {
     //     type: String,
@@ -41,7 +40,6 @@ const userSchema = new Schema({
 }, {
     timestamps: true
 });
-
-userSchema.index({ location: '2dsphere' })
-
-module.exports = mongoose.model("User", userSchema);
+// userSchema.index({ location: '2dsphere' })
+const User = mongoose.model("User", userSchema);
+module.exports = User

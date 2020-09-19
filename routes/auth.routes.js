@@ -7,39 +7,46 @@ const User = require("../models/user.model")
 const bcrypt = require("bcrypt")
 const bcryptSalt = 10
 
-// Signup
-router.get("/signup", (req, res, next) => res.render("auth/signup"))
-router.post("/signup", (req, res, next) => {
+// SIGNUP
+router.get("/user-signup", (req, res, next) => res.render("auth/user-signup"))
 
-    const { username, password } = req.body
+router.post("/user-signup", (req, res, next) => {
 
-    if (username.length === 0 || password.length === 0) {
-        res.render("auth/signup", { message: "Indicate username and password" })
+    const {name, username, password, email, phone} = req.body
+
+    if (username.length === 0 || password.length === 0 || email.length === 0 || !phone || name.length === 0) {
+        res.render("auth/user-signup", { message: "Cumplimenta toda la información porfavor" })
         return
     }
 
     User.findOne({ username })
         .then(user => {
             if (user) {
-                res.render("auth/signup", { message: "The username already exists" })
+                res.render("auth/user-signup", { message: "El usuario ya está registrado" })
                 return
             }
 
             const salt = bcrypt.genSaltSync(bcryptSalt)
             const hashPass = bcrypt.hashSync(password, salt)
 
-            User.create({ username, password: hashPass })
-                .then(() => res.redirect('/'))
+            User.create({name, username, password: hashPass, email, phone })
+                .then(() => {
+                    ///// podríamos logearle automáticamente tras realizar el registro????
+                    //// mandar mail al usuario recien registrado///
+
+                    res.redirect('/')})
                 .catch(error => next(error))
         })
         .catch(error => next(error))
 })
 
-// Signup
-router.get("/login", (req, res, next) => res.render("auth/login", { "message": req.flash("error") }))
-router.post("/login", passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login",
+
+
+// LOGIN
+// router.get("/", (req, res, next) => res.render("index", { "message": req.flash("error") }))
+router.post("/login-user", passport.authenticate("local", {
+    successRedirect: "/user/index",
+    failureRedirect: "/",
     failureFlash: true,
     passReqToCallback: true
 }))
