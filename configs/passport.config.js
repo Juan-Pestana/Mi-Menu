@@ -5,6 +5,8 @@ const LocalStrategy = require("passport-local").Strategy
 const flash = require("connect-flash") // error handling
 
 const User = require('../models/user.model')
+const Restaurant = require('../models/restaurant.model')
+
 
 module.exports = app => {
 
@@ -23,10 +25,26 @@ module.exports = app => {
         })
     })
 
+    passport.deserializeUser((id, cb) => {
+        Restaurant.findById(id, (err, user) => {
+            if (err) return cb(err)
+            cb(null, user)
+        })
+    })
+
     app.use(flash())
 
     passport.use(new LocalStrategy({ passReqToCallback: true }, (req, username, password, next) => {
         User.findOne({ username }, (err, user) => {
+            if (err) return next(err)
+            if (!user) return next(null, false, { message: "Incorrect username" })
+            if (!bcrypt.compareSync(password, user.password)) return next(null, false, { message: "Incorrect password" })
+            return next(null, user)
+        })
+    }))
+
+    passport.use(new LocalStrategy({ passReqToCallback: true }, (req, username, password, next) => {
+        Restaurant.findOne({ username }, (err, user) => {
             if (err) return next(err)
             if (!user) return next(null, false, { message: "Incorrect username" })
             if (!bcrypt.compareSync(password, user.password)) return next(null, false, { message: "Incorrect password" })

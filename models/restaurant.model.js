@@ -26,15 +26,15 @@ const restaurantSchema = new Schema({
         type: String,
         required: true,
     },
-    fotos: {
+    photos: {
         type: String,
  
     },
-    Logo: {
+    logo: {
         type: String,
 
     },
-    Dirección: {
+    address: {
         type: String,
         required: true,
     },
@@ -57,5 +57,5 @@ const restaurantSchema = new Schema({
 restaurantSchema.index({ location: '2dsphere' })
 
 
-const Restaurant = mongoose.model("User", userSchema);
+const Restaurant = mongoose.model("restaurant", restaurantSchema);
 module.exports = Restaurant
