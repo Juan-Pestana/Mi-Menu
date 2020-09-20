@@ -3,6 +3,8 @@ body {
   font-family: sans-serif;
 }
 
+//Pagina Inicio
+
 .carousel-item {
   height:450px;
 }
@@ -25,7 +27,20 @@ body {
   height: 400px
 }
 
+
+//formulario registro
 .center-form{
   width: 40%;
+  margin:0 auto
+}
+
+//perfil usuario
+.profile-user{
+  background-color:red;
+}
+.profile-user article{
+  border:3px solid black;
+  border-radius: 5px;
+  width: 20%;
   margin:0 auto
 }

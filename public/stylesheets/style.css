@@ -23,4 +23,13 @@ body {
   width: 40%;
   margin: 0 auto; }
 
+.profile-user {
+  background-color: red; }
+
+.profile-user article {
+  border: 3px solid black;
+  border-radius: 5px;
+  width: 20%;
+  margin: 0 auto; }
+
 /*# sourceMappingURL=style.css.map */
