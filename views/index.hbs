@@ -11,8 +11,7 @@
           <div class="carousel-caption d-none d-sm-block text-right mb-5">
             <h1 class="display-3">Encuentra tu Menu</h1>
             <p class="lead">Descubre los mejores menús del día de los restaurántes cerca de ti</p>
-            <a href="#" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#loginModal"
-              href='/auth/signup-user'>Inicia Sesión</a>
+            <a href="/user-signup" class="btn btn-danger btn-lg">Inicia Sesión</a>
           </div>
         </div>
       </div>
@@ -39,7 +38,7 @@
 <div class="container">
 
   <a class='btn btn-primary' href='/restaurant-signup'>regístra tu negocio</a>
-  <a class='btn btn-primary' data-toggle="modal" data-target="#loginModal" href='/auth/signup-user'>Inicia Sesión</a>
+  <a class='btn btn-primary' data-toggle="modal" data-target="#loginModal" href='/user-signup'>Inicia Sesión</a>
 
   {{#if message}}
   <p style="color: red">{{ message }}</p>
@@ -50,33 +49,3 @@
 
 </div>
 
-<div class="modal" id="loginModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Login</h5>
-        <button class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form action="/login-user" method="POST">
-          <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" name="username" placeholder="Username" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" placeholder="Password" class="form-control">
-          </div>
-          <p>Aun no tienes cuenta <a href="/user-signup">Regístrate</a></p>
-          <div class="modal-footer">
-            {{#if message}}
-            <p style="color: red">{{ message }}</p>
-            {{/if}}
-            <button class="btn btn-primary" type="submit">Login</button>
-          </div>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</div>

@@ -1,0 +1,17 @@
+<form action="/login-user" method="POST">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" placeholder="Username" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Password" class="form-control">
+    </div>
+    <p>Aun no tienes cuenta <a href="/user-signup">Regístrate</a></p>
+    <div class="modal-footer">
+        {{#if message}}
+        <p style="color: red">{{ message }}</p>
+        {{/if}}
+        <button class="btn btn-primary" type="submit">Login</button>
+    </div>
+</form>

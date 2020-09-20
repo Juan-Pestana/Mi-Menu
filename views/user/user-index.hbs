@@ -4,6 +4,8 @@
             <h1>Bienvenido: {{user.name}}</h1>
             <p>Email:{{user.email}}</p>
             <p>Telefono: {{user.phone}}</p>
+             <a class="btn btn-sm btn-dark" href="/user/update-user/{{user._id}}">Actualizar</a>
+             <a class="btn btn-sm btn-dark" href="/user/delete-user/{{user._id}}">Eliminar</a>
         </article>
     </section>
 </main>
@@ -16,9 +18,10 @@
 <h1>y aquí su localización en el mapa</h1>
 <div id="restaurantsMap"></div>
 <button class='btn btn-primary' id='buscar'>Buscar</button>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/javascripts/findRestaurants.js"></script>
 <script src="/javascripts/mapUser.js"></script>
-<script>
-    const buscar = () => console.log('hola')
-    document.querySelector('#buscar').addEventListener('click', buscar)
-</script>
+{{!-- funcion buscar hacer en script e invocar en init --}}
+
 <script src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap"></script>

@@ -1,4 +1,5 @@
 function initMap() {
+    document.querySelector('#buscar').addEventListener('click', buscar) 
 
     if (navigator.geolocation) {
 
