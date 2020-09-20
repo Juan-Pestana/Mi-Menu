@@ -29,6 +29,7 @@ body {
 .profile-user article {
   border: 3px solid black;
   border-radius: 5px;
+<<<<<<< HEAD
   width: 30%;
   margin: 0 auto; }
 
@@ -36,4 +37,9 @@ body {
   display: block;
   margin: 1em auto; }
 
+=======
+  width: 20%;
+  margin: 0 auto; }
+
+>>>>>>> 43a4571ce8ca9ab5e6863e41efbace226dd73a5f
 /*# sourceMappingURL=style.css.map */
