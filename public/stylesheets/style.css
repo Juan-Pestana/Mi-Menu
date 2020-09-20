@@ -1,8 +1,12 @@
 body {
   font-family: sans-serif; }
 
+#showcase {
+  background-color: #262b5a;
+  height: 823px; }
+
 .carousel-item {
-  height: 450px; }
+  height: 550px; }
 
 .carousel-image-1 {
   background: url(../images/image1.jpg);
@@ -10,27 +14,51 @@ body {
 
 .carousel-image-2 {
   background: url(../images/image2.jpg);
-  background-size: cover; }
+  background-size: 100% 100%; }
 
 .carousel-image-3 {
   background: url(../images/image3.jpg);
   background-size: cover; }
 
-#restaurantsMap {
-  height: 400px; }
-
 .center-form {
   width: 40%;
   margin: 0 auto; }
 
-.profile-user {
-  background-color: red; }
+.signUp {
+  background-color: #262b5a;
+  color: white; }
 
-.profile-user article {
+.border-form {
+  background-color: #262b5a;
+  color: white; }
+
+.border-login {
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 10%; }
+
+#restaurantsMap {
+  height: 475px;
+  width: 50%;
+  margin: 0 auto;
+  border: 2px solid black; }
+
+.flex-header {
+  display: flex;
+  justify-content: space-around; }
+
+.index-user {
+  text-align: center;
+  background-color: #262b5a;
+  color: white; }
+
+.profile-user {
+  background-color: white;
   border: 3px solid black;
   border-radius: 5px;
-  width: 30%;
-  margin: 0 auto; }
+  padding: 2%;
+  margin-bottom: 2%;
+  color: black; }
 
 #buscar {
   display: block;
