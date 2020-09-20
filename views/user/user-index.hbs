@@ -1,32 +1,35 @@
-<h1>Bienvenido {{name}}</h1>
-<p>Email:{{email}}</p>
-<p>Telefono: {{phone}}</p>
+<main>
+    <section class='profile-user'>
+        <article>
+            <h1>Bienvenido: {{user.name}}</h1>
+            <p>Email:{{user.email}}</p>
+            <p>Telefono: {{user.phone}}</p>
 
-<article>
-    <h2>Restaurantes favoritos:</h2>
+        </article>
 
-    <p>
-    {{#each favourites}}
+    </section>
+</main>
+
+<h2>Restaurantes favoritos:</h2>
+
+<ul>
+    {{#each user.favourites}}
+    <li>{{user.favourites}}</li>
     {{/each}}
 
-    </p>
-        
-        
-
-   
-
-</article>
-
-
-
+</ul>
 
 
 <h1>y aquí su localización en el mapa</h1>
 
 <div id="restaurantsMap"></div>
 
-
+<button class='btn btn-primary' id='buscar'>Buscar</button>
 
 
 <script src="/javascripts/mapUser.js"></script>
+<script>
+    const buscar = () => console.log('hola')
+    document.querySelector('#buscar').addEventListener('click', buscar)
+</script>
 <script src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap"></script>

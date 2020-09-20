@@ -51,6 +51,9 @@ router.post("/login-user", passport.authenticate("local", {
     passReqToCallback: true
 }))
 
+router.get("/restaurant-signup", (req, res, next) => res.render("auth/restaurant-signup"))
+
+
 // Logout
 router.get('/logout', (req, res, next) => {
     req.logout()

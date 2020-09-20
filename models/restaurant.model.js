@@ -26,15 +26,15 @@ const restaurantSchema = new Schema({
         type: String,
         required: true,
     },
-    fotos: {
+    photos: {
         type: String,
  
     },
-    Logo: {
+    logo: {
         type: String,
 
     },
-    Dirección: {
+    address: {
         type: String,
         required: true,
     },
