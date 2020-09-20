@@ -73,7 +73,7 @@ router.post("/restaurant-signup", (req, res, next) => {
     const { name, username, password, email, phone, opening, photos, logo, address } = req.body
 
     if (username.length === 0 || password.length === 0 || email.length === 0 || !phone || name.length === 0) {
-        res.render("auth/restautant-signup", { message: "Cumplimenta toda la información porfavor" })
+        res.render("auth/restaurant-signup", { message: "Cumplimenta toda la información porfavor" })
         return
     }
 
