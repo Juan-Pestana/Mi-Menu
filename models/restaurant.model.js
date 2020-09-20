@@ -57,5 +57,5 @@ const restaurantSchema = new Schema({
 restaurantSchema.index({ location: '2dsphere' })
 
 
-const Restaurant = mongoose.model("User", userSchema);
+const Restaurant = mongoose.model("restaurant", restaurantSchema);
 module.exports = Restaurant

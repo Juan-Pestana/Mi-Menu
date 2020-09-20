@@ -4,29 +4,18 @@
             <h1>Bienvenido: {{user.name}}</h1>
             <p>Email:{{user.email}}</p>
             <p>Telefono: {{user.phone}}</p>
-
         </article>
-
     </section>
 </main>
-
 <h2>Restaurantes favoritos:</h2>
-
 <ul>
     {{#each user.favourites}}
-    <li>{{user.favourites}}</li>
+    <li>{{this.name}}</li>
     {{/each}}
-
 </ul>
-
-
 <h1>y aquí su localización en el mapa</h1>
-
 <div id="restaurantsMap"></div>
-
 <button class='btn btn-primary' id='buscar'>Buscar</button>
-
-
 <script src="/javascripts/mapUser.js"></script>
 <script>
     const buscar = () => console.log('hola')

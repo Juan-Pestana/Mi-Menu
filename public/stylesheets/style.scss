@@ -1,18 +1,13 @@
 body {
-
   font-family: sans-serif;
 }
-
 //Pagina Inicio
-
 .carousel-item {
   height:450px;
 }
-
 .carousel-image-1 {
   background: url(../images/image1.jpg);
   background-size: cover;
-  
 }
 .carousel-image-2 {
   background: url(../images/image2.jpg);
@@ -22,18 +17,14 @@ body {
   background: url(../images/image3.jpg);
   background-size: cover;
 }
-
 #restaurantsMap {
   height: 400px
 }
-
-
 //formulario registro
 .center-form{
   width: 40%;
   margin:0 auto
 }
-
 //perfil usuario
 .profile-user{
   background-color:red;
