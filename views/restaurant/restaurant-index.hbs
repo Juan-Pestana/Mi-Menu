@@ -1,0 +1,54 @@
+
+
+<div class="conainer">
+<h3>Indica el número de primeros, segundos y postres que quieres añadir al menú de hoy</h3><br><br>
+
+    <form>
+        <label for="primeros">Primeros</label><br>
+        <input type= 'number' class="primeros"><br><br>
+        <label for="segundos">Segundos</label><br>
+        <input type= 'number' class="segundos"><br><br>
+        <label for="postres">Postres</label><br>
+        <input type= 'number' class="postres"><br><br>
+        <button id= "add">añadir platos</button>
+    </form>
+
+</div>
+<div class="container">
+    <form class='d-flex justify-content-around'action="/restaurant/update/{{id}}">
+        <div >
+            <label>Primeros</label>
+            <div id='starters'>
+ 
+
+            </div>
+           
+            
+
+        </div>
+        <div>
+            <label>Segundos</label>
+                <div id='main'>
+            
+
+                </div>
+
+        </div>
+        <div>
+            <label>Postres</label>
+            <div id='dessert'>
+            
+
+            </div>
+
+        </div>
+        
+           <button type="submit">Actualizar</button>
+        </form>
+</div>
+    
+
+
+<script src="/javascripts/menu.update.js"></script>
+
+

@@ -44,7 +44,7 @@ router.post("/user-signup", (req, res, next) => {
 
 
 // USER LOGIN
-// router.get("/", (req, res, next) => res.render("index", { "message": req.flash("error") }))
+ router.get("/", (req, res, next) => res.render("index", { "message": req.flash("error") }))
 router.post("/login-user", passport.authenticate("local", {
     successRedirect: "/user/index",
     failureRedirect: "/",
@@ -77,7 +77,7 @@ router.post("/restaurant-signup", (req, res, next) => {
     const {name, username, password, email, phone, opening, photos, logo, address} = req.body
 
     if (username.length === 0 || password.length === 0 || email.length === 0 || !phone || name.length === 0) {
-        res.render("auth/user-signup", { message: "Cumplimenta toda la información porfavor" })
+        res.render("auth/restaurant-signup", { message: "Cumplimenta toda la información porfavor" })
         return
     }
 
