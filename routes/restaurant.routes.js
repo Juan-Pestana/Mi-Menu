@@ -49,10 +49,6 @@ router.post('/update-menu/:id', (req, res)=>{
 
     let {date, price} = req.body
 
-   
-
-    
-
     const dailyMenu ={
         starters : req.user.dailyMenu.starters,
         main : req.user.dailyMenu.main,
@@ -69,8 +65,53 @@ router.post('/update-menu/:id', (req, res)=>{
     .then(()=> res.redirect('/restaurant/index'))
     .catch(err => console.log(err))
 
+})
+//---------------Clean the daily menu before updating-----------------
+router.post('/clear-menu/:id', (req,res)=>{
+    const id= req.params.id
+
+    const dailyMenu ={
+        starters : [],
+        main : [],
+        dessert:[],
+        date: new Date(),
+        price: 0
+    }
+
+    const {name, username, password, email, phone, opening, photos, logo, location } = req.user
+
+    const infoToUpdate = {name, username, password, email, phone, opening, photos, logo, location, dailyMenu}
+
+    Restaurant.findByIdAndUpdate(id, infoToUpdate)
+    .then(()=> res.redirect('/restaurant/index'))
+    .catch(err => console.log(err))
 
 })
+//-------------Update Restaurant Profile-----------------
+
+router.post('/update-details/:id', (req, res)=>{
+
+    const id = req.params.id
+
+    const dailyMenu = req.user.dailyMenu
+
+    const location= {
+        type: 'Point',
+        coordinates: [req.body.longitude, req.body.latitude ]
+    }
+
+    const {name, username, email, phone, address, opening, photos, logo} = req.body
+
+    const infoToUpdate = {name, username, email, phone, address, opening, photos, logo, location, dailyMenu}
+        
+    Restaurant.findByIdAndUpdate(id, infoToUpdate)
+    .then(()=> res.redirect('/restaurant/index'))
+    .catch(err => console.log(err))
+
+
+
+})
+
 
 
 module.exports = router

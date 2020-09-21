@@ -16,23 +16,24 @@
         <ul>
             {{!-- {{ resdetail}} --}}
             <li>Entrantes:
-                {{#each resdetail.dailyMenu.starters}}
+                {{#each dailyMenu.starters}}
                 <p>{{this.name}}</p>
                 {{/each}}
             </li>
             <li>Principales:
-                {{#each resdetail.dailyMenu.main}}
+                {{#each dailyMenu.main}}
                 <p>{{this.name}}</p>
                 {{/each}}
             </li>
             <li>Postres:
-                {{#each resdetail.dailyMenu.dessert}}
+                
+                {{#each dailyMenu.dessert}}
                 <p>{{this.name}}</p>
                 {{/each}}
             </li>
 
         </ul>
-        <p>Precio: {{resdetail.dailyMenu.price}}$</p>
+        <p>Precio: {{dailyMenu.price}}$</p>
 
     </article>
 
