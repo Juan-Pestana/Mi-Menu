@@ -22,6 +22,12 @@ const userSchema = new Schema({
         type: Number,
         required: true,
     },
+    order: {
+        type: Schema.Types.ObjectId,
+        ref:'OrderMenu'
+    },
+
+
     // location: {
     //     type: {
     //         type: String
@@ -32,6 +38,9 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Restaurant'
     }],
+
+
+
     // role: {
     //     type: String,
     //     enum: ['User', 'Restaurant'],
