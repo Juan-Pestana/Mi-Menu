@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
+
+
 const userSchema = new Schema({
     name: {
         type: String,
@@ -24,16 +26,10 @@ const userSchema = new Schema({
     },
     order: {
         type: Schema.Types.ObjectId,
-        ref:'OrderMenu'
+        ref:'Order'
     },
 
 
-    // location: {
-    //     type: {
-    //         type: String
-    //     },
-    //     coordinates: [Number]
-    // },
     favRestaurants: [{
         type: Schema.Types.ObjectId,
         ref: 'Restaurant'

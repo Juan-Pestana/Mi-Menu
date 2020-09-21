@@ -12,10 +12,12 @@ const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.r
 
 router.get("/index", checkLoggedIn, (req, res) => {
     Restaurant.find()
-        // req.user.populate('order')
-        // console.log(req.user.order)
         .then(data => {
-            res.render('user/user-index', { user: req.user, key: process.env.KEY, restaurant: data })
+           User.findById(req.user.id)
+            .populate('order')
+            .then(userData => res.render('user/user-index', { user: userData, key: process.env.KEY, restaurant: data }))
+             
+       
 
         })
 
