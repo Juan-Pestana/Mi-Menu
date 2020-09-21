@@ -38,4 +38,33 @@
     </article>
 
 
+
 </section>
+
+<form class='pedido' action="/user/order/{{_id}}" method="post">
+    <div class="form-group">
+        <label class='choose' for="pedido">Elige</label>
+        <select class="form-control" id="" name="starter">
+            {{#each dailyMenu.starters}}
+            <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div class="form-group">
+        <select class="form-control" id="" name="main">
+            {{#each dailyMenu.main}}
+            <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div class="form-group">
+        <select class="form-control" id="" name="dessert">
+            {{#each dailyMenu.dessert}}
+            <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <p class='textPrice'>Precio</p>
+    <input class='valuePrice' type="number" name='price' value="{{dailyMenu.price}}" readonly>
+    <button type='submit' class='btn btn-primary' id='buscar'>Pedir</button>
+</form>
