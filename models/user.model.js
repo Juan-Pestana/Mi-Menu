@@ -28,10 +28,10 @@ const userSchema = new Schema({
     //     },
     //     coordinates: [Number]
     // },
-    favRestaurants: {
-        type: [String],
-
-    },
+    favRestaurants: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Restaurant'
+    }],
     // role: {
     //     type: String,
     //     enum: ['User', 'Restaurant'],

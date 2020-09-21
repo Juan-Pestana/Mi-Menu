@@ -18,39 +18,39 @@ module.exports = app => {
 
     passport.serializeUser((user, cb) => cb(null, user._id))
 
-    passport.deserializeUser((id, cb) => {
-        User.findById(id, (err, user) => {
-            if (err) return cb(err)
-            cb(null, user)
-        })
-    })
-
     // passport.deserializeUser((id, cb) => {
-    //     Restaurant.findById(id, (err, user) => {
+    //     User.findById(id, (err, user) => {
     //         if (err) return cb(err)
     //         cb(null, user)
     //     })
     // })
 
+    passport.deserializeUser((id, cb) => {
+        Restaurant.findById(id, (err, user) => {
+            if (err) return cb(err)
+            cb(null, user)
+        })
+    })
+
     app.use(flash())
 
-    passport.use(new LocalStrategy({ passReqToCallback: true }, (req, username, password, next) => {
-        User.findOne({ username }, (err, user) => {
-            if (err) return next(err)
-            if (!user) return next(null, false, { message: "Incorrect username" })
-            if (!bcrypt.compareSync(password, user.password)) return next(null, false, { message: "Incorrect password" })
-            return next(null, user)
-        })
-    }))
-
     // passport.use(new LocalStrategy({ passReqToCallback: true }, (req, username, password, next) => {
-    //     Restaurant.findOne({ username }, (err, user) => {
+    //     User.findOne({ username }, (err, user) => {
     //         if (err) return next(err)
     //         if (!user) return next(null, false, { message: "Incorrect username" })
     //         if (!bcrypt.compareSync(password, user.password)) return next(null, false, { message: "Incorrect password" })
     //         return next(null, user)
     //     })
     // }))
+
+    passport.use(new LocalStrategy({ passReqToCallback: true }, (req, username, password, next) => {
+        Restaurant.findOne({ username }, (err, user) => {
+            if (err) return next(err)
+            if (!user) return next(null, false, { message: "Incorrect username" })
+            if (!bcrypt.compareSync(password, user.password)) return next(null, false, { message: "Incorrect password" })
+            return next(null, user)
+        })
+    }))
 
     app.use(passport.initialize())
     app.use(passport.session())

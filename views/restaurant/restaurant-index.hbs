@@ -1,6 +1,6 @@
 
 
-<div class="conainer">
+{{!-- <div class="container">
 <h3>Indica el número de primeros, segundos y postres que quieres añadir al menú de hoy</h3><br><br>
 
     <form>
@@ -45,10 +45,58 @@
         
            <button type="submit">Actualizar</button>
         </form>
+</div> --}}
+
+<div class='container'>
+    
+    <form action="/restaurant/update-dish/{{user._id}}" method="POST">
+    <label for="">Añade los platos uno a uno</label><br>
+    <select name="type" id="">
+        <option value="starters">Primero</option>
+        <option value="main">Principal</option>
+        <option value="desert">Postre</option>
+    </select><br>
+    <input type="text" name='dishName' placeholder="Nombre del plato"><br>
+    <select name="category" id="">
+        <option value="ensalada">ensalada</option>
+        <option value="sopa">sopa</option>
+        <option value="pasta">pasta</option>
+        <option value="crema">crema</option>
+        <option value="pescado">pescado</option>
+        <option value="carne">carne</option>
+        <option value="guiso">guiso</option>
+        <option value="cocido">cocido</option>
+        <option value="huevos">huevos</option>
+    </select><br>
+    <button  type="submit">Añadir plato</button><br><br>
+     </form>
+
+    <form action="/restaurant/update-menu/{{user._id}}" method="POST">
+    <label for="date">Fecha</label><br>
+    <input type="date" name='date' value='today'><br><br>
+    <label for="price">Precio</label><br>
+    <input type="number" name="price"><br><br>
+
+    <button type="submit">Actualizar</button>
+
+    
+    </form>
+
+    
+
+   
+
 </div>
     
 
+<script>
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
 
+    $("today") = mm + '/' + dd + '/' + yyyy;
+</script>
 <script src="/javascripts/menu.update.js"></script>
 
 

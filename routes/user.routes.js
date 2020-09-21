@@ -5,7 +5,9 @@ const User = require("../models/user.model")
 
 
 
-router.get("/index", (req, res) => res.render('user/user-index', { user: req.user, key: process.env.KEY }))
+router.get("/index", (req, res) => {
+
+    res.render('user/user-index', { user: req.user, key: process.env.KEY })})
 
 
 router.get('/update-user/:id', (req, res, next) => {
@@ -35,6 +37,9 @@ router.get('/delete-user/:id', (req, res, next) => {
         .then(() => res.redirect('/'))
         .catch(err => next(err))
 })
+
+router.post('/addFavorites/')
+
 
 
 module.exports = router

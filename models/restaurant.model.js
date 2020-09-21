@@ -45,10 +45,15 @@ const restaurantSchema = new Schema({
         coordinates: [Number]
     },
     dailyMenu :{
-        starters : [{name:{type: String}, category: {type: String, enum: ['ensalada', 'sopa', 'pasta', 'crema', 'pescado', 'carne', 'guiso', 'cocido', 'huevos']}}],
-        main : [{name:{type: String}, category: {type: String, enum: ['ensalada', 'sopa', 'pasta', 'crema', 'pescado', 'carne', 'guiso', 'cocido', 'huevos']}}],
-        dessert : [{name:{type: String}, category: {type: String, enum: ['fruta', 'tarta', 'chocolate', 'lacteos', 'café']}}],
-        price : {type: Number}
+        starters :{type: [{name:{type: String}, category: {type: String, enum: ['ensalada', 'sopa', 'pasta', 'crema', 'pescado', 'carne', 'guiso', 'cocido', 'huevos']}}],
+                    default:[] } ,
+        main : {type: [{name:{type: String}, category: {type: String, enum: ['ensalada', 'sopa', 'pasta', 'crema', 'pescado', 'carne', 'guiso', 'cocido', 'huevos']}}],
+        default:[] } ,
+        dessert :{type: [{name:{type: String}, category: {type: String, enum: ['ensalada', 'sopa', 'pasta', 'crema', 'pescado', 'carne', 'guiso', 'cocido', 'huevos']}}],
+        default:[] } ,
+        date: {type: Date, default: new Date().toJSON().slice(0,10).replace(/-/g,'/')},
+        price : {type: Number,
+                default: 0}
     },
     //orders: 
 
