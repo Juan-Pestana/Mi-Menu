@@ -29,7 +29,6 @@ const userSchema = new Schema({
         ref:'Order'
     },
 
-
     favRestaurants: [{
         type: Schema.Types.ObjectId,
         ref: 'Restaurant'
