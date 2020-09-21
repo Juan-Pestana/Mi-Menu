@@ -51,7 +51,11 @@ router.post("/login-user", passport.authenticate("local", {
     passReqToCallback: true
 }))
 
-//USER UPDATE
+router.get('/logout', (req, res, next) => {
+    req.logout()
+    res.render('auth/user-login', { message: 'Sesión cerrada' })
+})
+
 
 
 
@@ -110,9 +114,5 @@ router.post("/restaurant-login", passport.authenticate("local", {
 
 
 // Logout
-router.get('/logout', (req, res, next) => {
-    req.logout()
-    res.render('auth/login', { message: 'Sesión cerrada' })
-})
 
 module.exports = router

@@ -7,6 +7,7 @@
                 <p>Telefono: {{user.phone}}</p>
                 <a class="btn btn-sm btn-dark" href="/user/update-user/{{user._id}}">Actualizar</a>
                 <a class="btn btn-sm btn-dark" href="/user/delete-user/{{user._id}}">Eliminar</a>
+                <a class="btn btn-sm btn-dark" href="/user/logout">Cierra Sesion</a>
             </article>
             <div class="profile-user">
                 <h2>Pedidos:</h2>
@@ -14,13 +15,18 @@
 
 
             <div class='profile-user'>
-                <h2>Restaurantes favoritos:</h2>
+                <h2>Lista de Restaurantes cercanos:</h2>
+                <hr>
                 <ul>
-                    {{#each user.favourites}}
-                    <li>{{this.name}}</li>
-                    {{/each}}
-                </ul>
+                    {{#each restaurant}}
+                    <li>
+                        <a href="/user/restaurant-detail/{{this._id}}">{{this.name}}</a>
+                        
+                    </li>
 
+                    {{/each}}
+                {{!-- <a class="btn btn-sm btn-dark" href="/user/favoritos/{{user._id}}">ver favoritos</a> --}}
+                </ul>
             </div>
         
 

@@ -69,6 +69,38 @@ body {
   // margin: 0 auto;
   color:black
 }
+.profile-user li{
+  list-style:none;
+  
+}
+.profile-user li a{
+  color:black;
+  font-size: x-large;
+  text-decoration: none;
+
+}
+.profile-user li a:hover{
+  color:#262b5a;
+}
+
+
+//Detalles Restaurante
+
+.detail-rest{
+  background-color:#262b5a;
+  display:flex;
+  justify-content: space-evenly;
+  height: 700px;
+}
+.info-restaurant{
+  border:2px solid black;
+  border-radius: 5px;
+  width: 30%;
+  background-color:white;
+  text-align: center;
+  height: 400px;
+  margin-top:5em
+}
 
 
 #buscar {
