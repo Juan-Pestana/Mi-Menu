@@ -1,0 +1,74 @@
+<section class='detail-rest'>
+    <article class='info-restaurant'>
+        <h2>Informacion del restaurante:</h2>
+        <hr>
+        {{!-- <img src="{{logo}}" alt="logo"> --}}
+        <p>Nombre: {{name}}</p>
+        <p>Direccion: {{address}}</p>
+        <p>Telefono: {{phone}}</p>
+        <p>Email: {{email}}</p>
+        <p>Horario: {{opening}}</p>
+    </article>
+
+    <article class='info-restaurant'>
+        <h2>Menu:</h2>
+        <hr>
+        <ul>
+            {{!-- {{ resdetail}} --}}
+            <li>Entrantes:
+                {{#each dailyMenu.starters}}
+                <p>{{this.name}}</p>
+                {{/each}}
+            </li>
+            <li>Principales:
+                {{#each dailyMenu.main}}
+                <p>{{this.name}}</p>
+                {{/each}}
+            </li>
+            <li>Postres:
+                {{#each dailyMenu.dessert}}
+                <p>{{this.name}}</p>
+                {{/each}}
+            </li>
+
+        </ul>
+        <p>Precio: {{dailyMenu.price}}$</p>
+
+    </article>
+
+
+</section>
+<form class='pedido' action="/user" method="post">
+
+    <div class="form-group">
+        <label class='choose'for="pedido">Elige</label>
+        {{#each dailyMenu.starters}}
+        <select class="form-control" id="" name="{{this.name}}">
+            <option value="{{this.name}}">{{this.name}}</option>
+        </select>
+        {{/each}}
+    </div>
+
+    <div class="form-group">
+      
+        {{#each dailyMenu.main}}
+        <select class="form-control" id="" name="{{this.name}}">
+            <option value="{{this.name}}">{{this.name}}</option>
+        </select>
+        {{/each}}
+    </div>
+
+    <div class="form-group">
+       
+        {{#each dailyMenu.dessert}}
+        <select class="form-control" id="" name="{{this.name}}">
+            <option value="{{this.name}}">{{this.name}}</option>
+        </select>
+        {{/each}}
+    </div>
+
+
+    <p class='textPrice'>Precio</p>
+    <input class='valuePrice'type="number" value="{{dailyMenu.price}}">
+
+</form>

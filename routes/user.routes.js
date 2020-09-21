@@ -18,7 +18,7 @@ router.get('/restaurant-detail/:id', (req, res) => {
     const id = req.params.id
     Restaurant.findById(id)
 
-        .then(resdetail => res.render('detalles', resdetail))
+        .then(resdetail => res.render('user/detalles', resdetail))
         .catch(err => console.log("ERRORR", err))
 })
 

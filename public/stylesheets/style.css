@@ -37,6 +37,10 @@ body {
   border-radius: 5px;
   padding: 10%; }
 
+#buscar {
+  display: block;
+  margin: 1em auto; }
+
 #restaurantsMap {
   height: 475px;
   width: 50%;
@@ -86,8 +90,23 @@ body {
   height: 400px;
   margin-top: 5em; }
 
-#buscar {
+.pedido {
+  border: 2px solid black;
+  width: 20%;
+  margin: 0 auto;
+  padding: 2%; }
+
+.choose {
   display: block;
-  margin: 1em auto; }
+  text-align: center; }
+
+.textPrice {
+  text-align: center; }
+
+.valuePrice {
+  display: block;
+  width: 20%;
+  margin: 0 auto;
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
