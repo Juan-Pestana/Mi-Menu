@@ -79,7 +79,7 @@ router.post('/order/:id', (req, res) => {
             infoUpdate.order = newOrder._id
 
             User.findByIdAndUpdate(userId, infoUpdate)
-                .populate('Order')
+                .populate('order')
                 .then(() => res.redirect('/user/index'))
                 .catch(err=>console.log(err))
         })

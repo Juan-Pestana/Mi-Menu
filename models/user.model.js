@@ -22,10 +22,10 @@ const userSchema = new Schema({
         type: Number,
         required: true,
     },
-    order: {
+    order: [{
         type: Schema.Types.ObjectId,
-        ref:'OrderMenu'
-    },
+        ref:'Order'
+    }],
 
 
     // location: {
