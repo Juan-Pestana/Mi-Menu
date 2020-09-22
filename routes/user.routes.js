@@ -2,11 +2,9 @@ const express = require('express')
 const router = express.Router()
 
 const User = require("../models/user.model")
-
 const Restaurant = require("../models/restaurant.model")
 
 const Order = require("../models/orderMenu.model")
-
 const transporter = require('./../configs/nodemailer.config')
 
 
@@ -15,14 +13,10 @@ const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.r
 router.get("/index", checkLoggedIn, (req, res) => {
     Restaurant.find()
         .then(data => {
-           User.findById(req.user.id)
-            .populate('order')
-            .then(userData => res.render('user/user-index', { user: userData, key: process.env.KEY, restaurant: data }))
-             
-       
-
+            User.findById(req.user.id)
+                .populate('order')
+                .then(userData => res.render('user/user-index', { user: userData, key: process.env.KEY, restaurant: data }))
         })
-
 })
 
 router.get('/restaurant-detail/:id', (req, res) => {
@@ -73,11 +67,21 @@ router.get('/logout', (req, res, next) => {
 router.post('/order/:id', (req, res) => {
     const resId = req.params.id
     const userId = req.user.id
+    const name = req.user.name
+    const email = req.user.email
 
     const { starter, main, dessert, price } = req.body
     const date = new Date()
 
-    //Aqui
+    transporter.sendMail({
+        from: 'Mi Menu app <miappprj@gmail.com>',
+        to: email,
+        subject: `Pedido realizado por, ${name}`,
+        text: `Su pedido es: ${starter}, ${main}, ${dessert} y el precio es de: ${price}`,
+
+    })
+        .then(info => console.log('INFORMACIÓN DEL ENVÍO', info))
+        .catch(err => console.log('HUBO UN ERROR:', err))
 
     Order.create({ starter, main, dessert, price, userId, date })
         .then(newOrder => {
@@ -87,7 +91,7 @@ router.post('/order/:id', (req, res) => {
             User.findByIdAndUpdate(userId, infoUpdate)
                 .populate('order')
                 .then(() => res.redirect('/user/index'))
-                .catch(err=>console.log(err))
+                .catch(err => console.log(err))
         })
 })
 

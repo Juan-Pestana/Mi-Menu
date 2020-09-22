@@ -19,8 +19,8 @@ router.post("/user-signup", (req, res, next) => {
     transporter.sendMail({
         from: 'Mi App <miappprj@gmail.com>',
         to: email,
-        subject: name,
-        text: 'Gracias por registrarte en nuestra app Mi-App',
+        subject: `Te damos la bienvenida, ${name}`,
+        text: 'Gracias por registrarte en nuestra app Mi-Menu',
         
     })
     .then(info => console.log('INFORMACIÓN DEL ENVÍO', info))
