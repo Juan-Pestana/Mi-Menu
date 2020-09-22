@@ -3,11 +3,11 @@
         <h2>Informacion del restaurante:</h2>
         <hr>
         {{!-- <img src="{{logo}}" alt="logo"> --}}
-        <p>Nombre: {{name}}</p>
-        <p>Direccion: {{address}}</p>
-        <p>Telefono: {{phone}}</p>
-        <p>Email: {{email}}</p>
-        <p>Horario: {{opening}}</p>
+        <p>Nombre: <span>{{name}}</span></p>
+        <p>Direccion: <span>{{address}}</span></p>
+        <p>Telefono: <span>{{phone}}</span></p>
+        <p>Email: <span>{{email}}</span></p>
+        <p>Horario: <span>{{opening}}</span></p>
     </article>
 
     <article class='info-restaurant'>
@@ -30,14 +30,12 @@
                 <p>{{this.name}}</p>
                 {{/each}}
             </li>
-
         </ul>
         <p>Precio: {{dailyMenu.price}}$</p>
-
     </article>
-
-
 </section>
+
+
 <form class='pedido' action="/user/order/{{_id}}" method="post">
 
     <div class="form-group">
@@ -70,7 +68,7 @@
 
     <p class='textPrice'>Precio</p>
     <input class='valuePrice' type="number" name='price' value="{{dailyMenu.price}}" readonly>
-    
+
 
     <button type='submit' class='btn btn-primary' id='buscar'>Pedir</button>
 
