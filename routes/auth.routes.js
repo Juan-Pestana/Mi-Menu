@@ -44,7 +44,7 @@ router.post("/user-signup", (req, res, next) => {
 
 // USER LOGIN
 router.get("/login-user", (req, res, next) => res.render("auth/user-login", { "message": req.flash("error") }))
-router.post("/login-user", passport.authenticate("local", {
+router.post("/login-user", passport.authenticate("user", {
     successRedirect: "/user/index",
     failureRedirect: "/login-user",
     failureFlash: true,
@@ -105,7 +105,7 @@ router.post("/restaurant-signup", (req, res, next) => {
 // RESTAURANT LOGIN
 router.get('/restaurant-login', (req, res, next) => res.render('auth/restaurant-login', { 'message': req.flash('error') }))
 
-router.post("/restaurant-login", passport.authenticate("local", {
+router.post("/restaurant-login", passport.authenticate("restaurant", {
     successRedirect: "/restaurant/index",
     failureRedirect: "/restaurant-login",
     failureFlash: true,

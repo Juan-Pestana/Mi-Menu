@@ -55,7 +55,10 @@ const restaurantSchema = new Schema({
         price : {type: Number,
                 default: 0}
     },
-    //orders: 
+    order: [{
+        type: Schema.Types.ObjectId,
+        ref:'Order'
+    }],
 
 })
 
