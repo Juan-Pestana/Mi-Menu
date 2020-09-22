@@ -8,8 +8,36 @@
     
     <div class='d-flex justify-content-center'>
         <div class='menu-container text-center pt-2'>
-        <h3>detalles del menú</h3>
-    </div>
+            <h3>Logo del restaurante aquí</h3>
+            <div class= 'text-left mt-5 p-4'>
+                <h5>Primeros</h5>
+            <ul>
+                {{#each user.dailyMenu.starters}}
+                <li>{{this.name}}</li>
+                {{/each}}
+            </ul>
+            <h5>Segundos</h5>
+            <ul>
+                {{#each user.dailyMenu.main}}
+                <li>{{this.name}}</li>
+                {{/each}}
+            </ul>
+            <h5>Postres</h5>
+            <ul>
+                {{#each user.dailyMenu.dessert}}
+                <li>{{this.name}}</li>
+                {{/each}}
+            </ul>
+                {{!-- <p>$(today)</p> --}}
+               
+                <h4 class= 'float-right'>Precio {{user.dailyMenu.price}}€</h4>
+
+            </div>
+            
+
+            
+
+        </div>
 
     </div>
     
@@ -51,7 +79,8 @@
     <form action="/restaurant/update-menu/{{user._id}}" method="POST">
     <div class= 'd-flex justify-content-between align-items-center bg-light'>
         <label for="date">Fecha</label><br>
-        <input type="date" name='date' value='today'><br><br>
+        <input type="date" name='date' ><br><br>
+        {{!-- ojo con la fecha meter arriba value="today" que viene del script --}}
         <label for="price">Precio</label><br>
         <input type="number" name="price"><br><br>
     </div>
@@ -127,13 +156,15 @@
     
 
 <script>
-    var today = new Date();
+    var today = {{user.dailyMenu.date}};
+    console.log(today)
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
 
-    $("today") = mm + '/' + dd + '/' + yyyy;
+    today = dd + '/' + mm + '/' + yyyy;
+    {//document.getElementById('dateMenu').innerHTML = today --}}
 </script>
-<script src="/javascripts/menu.update.js"></script>
+
 
 

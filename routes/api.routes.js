@@ -5,7 +5,7 @@ const Restaurant = require('../models/restaurant.model');
 router.get('/restaurants', (req, res, next) => {
 
     Restaurant
-        .find()
+        .find()                     //// to do query restaurantes cercanos {Near}
         .then(response => res.json(response))
         .catch(err => next(err))
 })
