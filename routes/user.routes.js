@@ -7,6 +7,8 @@ const Restaurant = require("../models/restaurant.model")
 
 const Order = require("../models/orderMenu.model")
 
+const transporter = require('./../configs/nodemailer.config')
+
 
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/user-login', { message: 'Desautorizado, incia sesión para continuar' })
 
@@ -74,6 +76,8 @@ router.post('/order/:id', (req, res) => {
 
     const { starter, main, dessert, price } = req.body
     const date = new Date()
+
+    //Aqui
 
     Order.create({ starter, main, dessert, price, userId, date })
         .then(newOrder => {

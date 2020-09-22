@@ -93,6 +93,10 @@ body {
   height: 400px;
   margin-top: 5em; }
 
+.info-restaurant li {
+  list-style: none;
+  border-bottom: 1px solid red; }
+
 .pedido {
   border: 2px solid black;
   width: 20%;

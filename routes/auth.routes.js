@@ -8,12 +8,24 @@ const Restaurant = require("../models/restaurant.model")
 const bcrypt = require("bcrypt")
 const bcryptSalt = 10
 
+const transporter = require('./../configs/nodemailer.config')
+
 // USER SIGNUP
 router.get("/user-signup", (req, res, next) => res.render("auth/user-signup"))
 
 router.post("/user-signup", (req, res, next) => {
 
     const { name, username, password, email, phone } = req.body
+    transporter.sendMail({
+        from: 'Mi App <miappprj@gmail.com>',
+        to: email,
+        subject: name,
+        text: 'Gracias por registrarte en nuestra app Mi-App',
+        
+    })
+    .then(info => console.log('INFORMACIÓN DEL ENVÍO', info))
+    .catch(err => console.log('HUBO UN ERROR:', err))
+
 
     if (username.length === 0 || password.length === 0 || email.length === 0 || !phone || name.length === 0) {
         res.render("auth/user-signup", { message: "Cumplimenta toda la información porfavor" })
