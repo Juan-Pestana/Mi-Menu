@@ -3,11 +3,17 @@ const router = express.Router()
 
 const Restaurant = require("../models/restaurant.model")
 
-router.get("/index", (req, res) => {
+const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/restaurant-login', { message: 'Desautorizado, incia sesión para continuar' })
+const checkIsRestaurant = (req, res, next) => req.user.dailyMenu ? next() : res.render('auth/restaurant-login', { message: 'Desautorizado, incia sesión para continuar' })
+
+router.get("/index",checkLoggedIn, checkIsRestaurant, (req, res) => {
     
     res.render('restaurant/restaurant-index', { user : req.user, key: process.env.KEY })
 })
+
+
 //-------------------Actualizar los platos del Menú-------------------
+
 router.post('/update-dish/:id', (req, res)=>{
     const id = req.user.id
     const {dishName, category, type} = req.body
@@ -43,13 +49,16 @@ router.post('/update-dish/:id', (req, res)=>{
         .catch(err => console.log(err))
     
 })
+
+
 // ------------------Actualizar fecha y precio del Menu--------------
+
 router.post('/update-menu/:id', (req, res)=>{
     id = req.user.id
 
     let {date, price} = req.body
 
-    const dailyMenu ={
+    const dailyMenu ={                                      // ojo destructuring..... sácalo todo de req.user....
         starters : req.user.dailyMenu.starters,
         main : req.user.dailyMenu.main,
         dessert:req.user.dailyMenu.dessert,
@@ -66,7 +75,10 @@ router.post('/update-menu/:id', (req, res)=>{
     .catch(err => console.log(err))
 
 })
+
+
 //---------------Clean the daily menu before updating-----------------
+
 router.post('/clear-menu/:id', (req,res)=>{
     const id= req.params.id
 
@@ -87,6 +99,8 @@ router.post('/clear-menu/:id', (req,res)=>{
     .catch(err => console.log(err))
 
 })
+
+
 //-------------Update Restaurant Profile-----------------
 
 router.post('/update-details/:id', (req, res)=>{

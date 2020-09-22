@@ -70,24 +70,43 @@ router.get('/logout', (req, res, next) => {
 
 
 
+
+
 router.post('/order/:id', (req, res) => {
     const resId = req.params.id
     const userId = req.user.id
-
+    const name = req.user.name
+    const email = req.user.email
     const { starter, main, dessert, price } = req.body
     const date = new Date()
 
-    //Aqui
+    
+    transporter.sendMail({
+        from: 'Mi Menu app <miappprj@gmail.com>',
+        to: email,
+        subject: `Pedido realizado por, ${name}`,
+        text: `Su pedido es: ${starter}, ${main}, ${dessert} y el precio es de: ${price}`,
+    })
+        .then(info => console.log('INFORMACIÓN DEL ENVÍO', info))
+        .catch(err => console.log('HUBO UN ERROR:', err))
+
 
     Order.create({ starter, main, dessert, price, userId, date })
         .then(newOrder => {
             const infoUpdate = req.user
             infoUpdate.order = newOrder._id
-
             User.findByIdAndUpdate(userId, infoUpdate)
-                .populate('order')
-                .then(() => res.redirect('/user/index'))
-                .catch(err=>console.log(err))
+                // .populate('order')
+                //ojo que a lo mejor hay que traer la linea 100 de vuelta paqui
+                .then(()=>{
+                    Restaurant.findById(resId)
+                        .then((restInfo)=>{
+                            restInfo.order.push(newOrder._id)
+                            Restaurant.findByIdAndUpdate(resId, restInfo)
+                            .then(() => res.redirect('/user/index'))
+                        })
+                })
+                .catch(err => console.log(err))
         })
 })
 
