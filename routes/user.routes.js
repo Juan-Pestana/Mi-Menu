@@ -75,7 +75,9 @@ router.get('/logout', (req, res, next) => {
 //PEDIDO USUARIO
 router.post('/order/:id', (req, res) => {
     const resId = req.params.id
-    const { userId, name, email } = req.user
+    const userId = req.user.id
+    const name = req.user.name
+    const email = req.user.email
 
     const { starter, main, dessert, price } = req.body
     const date = new Date()
