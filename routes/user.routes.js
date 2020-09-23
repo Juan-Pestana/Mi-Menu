@@ -12,6 +12,7 @@ const transporter = require('./../configs/nodemailer.config')
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/user-login', { message: 'Desautorizado, incia sesión para continuar' })
 
 router.get("/index", checkLoggedIn, (req, res) => {
+
     Restaurant.find()
         .then(data => {
             User.findById(req.user.id)

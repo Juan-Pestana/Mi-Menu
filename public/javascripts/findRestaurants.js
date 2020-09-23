@@ -24,18 +24,27 @@ function drawMap(restaurants) {
                     new google.maps.Marker({ map, position: center })
                 },
                 err => console.log('No se pudo acceder a la localización:', err)
-            )} 
+            )
+                // 
+
+                restaurants.forEach(elm => {
+
+                    let center = {
+                        lat: elm.location.coordinates[1],
+                        lng: elm.location.coordinates[0]
+                    }
+            
+                    new google.maps.Marker({ map, position: center })
+                })
+
+                // err => console.log('No se pudo acceder a la localización:', err)
+
+
+
+            } 
     
 
-    restaurants.forEach(elm => {
+    
 
-        let center = {
-            lat: elm.location.coordinates[1],
-            lng: elm.location.coordinates[0]
-        }
 
-        new google.maps.Marker({ map, position: center })
-    })
-
-   map.setCenter({ lat: restaurants[0].location.coordinates[1], lng: restaurants[0].location.coordinates[0] })
 
