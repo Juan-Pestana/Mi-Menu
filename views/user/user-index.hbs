@@ -24,13 +24,19 @@
                         <p>precio: {{user.order.price}}€</p>
                     </div>
                 </div>
-
+                <select id="meters">
+                    <option value="300">300</option>
+                    <option value="500">500</option>
+                    <option value="800">800</option>
+                    <option value="1000">1000</option>
+                </select>
+                <button id = "search">search</button>
             </div>
             <div class="col-10">
                 <div class='profile-user'>
                     <h2>Lista de Restaurantes cercanos</h2>
                     
-                    <ul class='flex'>
+                    <ul id= "lista" class='flex'>
                         {{#each restaurant}}
                         <li>
                             <a href="/user/restaurant-detail/{{this._id}}">{{this.name}}</a>
@@ -54,7 +60,9 @@
 
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="/javascripts/findRestaurants.js"></script>
+<script src="/javascripts/update.userPosition.js"></script>
 <script src="/javascripts/mapUser.js"></script>
+<script src="/javascripts/findRestaurants.js"></script>
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap"></script>

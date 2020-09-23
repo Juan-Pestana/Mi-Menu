@@ -1,12 +1,29 @@
-let map
-const buscar = () => {
-    axios.get('/api/restaurants')
-        .then(response => drawMap(response.data))
-        .catch(err => console.log('Hubo un error:', err))
+ApiHandler= new ApiHandler()
 
-}
+// const meters = document.querySelector('#meters').value
 
 
+
+
+//     ApiHandler.getLocalitation(center, meters)
+//     .then(response => {
+
+//         drawMap(response.data)
+//     })
+        
+//     .catch(err => console.log('Hubo un error:', err))
+
+
+
+
+// let map
+//  const buscar = () => {
+
+    // axios.post('/api/restaurants/')
+    //     .then(response => drawMap(response.data))
+    //     .catch(err => console.log('Hubo un error:', err))
+
+ 
 
 function drawMap(restaurants) {
 
@@ -16,32 +33,56 @@ function drawMap(restaurants) {
             zoom: 17
         })
 
-            //getCurrentPosition(successCallback, failureCallback)
+            // getCurrentPosition(successCallback, failureCallback)
+            
             navigator.geolocation.getCurrentPosition(
                 position => {
                     center = { lat: position.coords.latitude, lng: position.coords.longitude }
+                    // const coordinates = {lng: position.coords.longitude , lat: position.coords.latitude }
                     map.setCenter(center)
                     new google.maps.Marker({ map, position: center })
+
+
+                    
+
+                    
                 },
                 err => console.log('No se pudo acceder a la localización:', err)
             )
+
+            restaurants.forEach(elm => {
+                let center = {
+                    lat: elm.location.coordinates[1],
+                    lng: elm.location.coordinates[0]
+                }
+                new google.maps.Marker({ map, position: center })
+            })
+            // .catch(err => console.log('Hubo un error:', err))
                 // 
 
-                restaurants.forEach(elm => {
-
-                    let center = {
-                        lat: elm.location.coordinates[1],
-                        lng: elm.location.coordinates[0]
-                    }
-            
-                    new google.maps.Marker({ map, position: center })
-                })
-
-                // err => console.log('No se pudo acceder a la localización:', err)
-
-
+                // 
 
             } 
+
+// let meters = document.querySelector('#meters').value 
+window.addEventListener('load', ()=>{
+    // console.log(center)
+
+
+    document.querySelector('#search').addEventListener('click', function(event) {
+        let meters = document.querySelector('#meters').value 
+        center.distance = parseFloat(meters)
+        ApiHandler.getLocalitation(center)
+                .then(response => {
+    
+                    drawMap(response.data)
+                
+                
+                })
+    })
+
+})
+   
     
 
     

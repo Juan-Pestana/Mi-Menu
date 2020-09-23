@@ -1,4 +1,9 @@
 
+
+
+
+
+
     document.getElementById('add').addEventListener('click', function (event) {
 
        const primeros = document.querySelector('.primeros').value
