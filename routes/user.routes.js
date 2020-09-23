@@ -8,6 +8,7 @@ const Order = require("../models/orderMenu.model")
 const transporter = require('./../configs/nodemailer.config')
 
 
+
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/user-login', { message: 'Desautorizado, incia sesión para continuar' })
 
 router.get("/index", checkLoggedIn, (req, res) => {
@@ -19,13 +20,18 @@ router.get("/index", checkLoggedIn, (req, res) => {
         })
 })
 
-router.get('/restaurant-detail/:id', (req, res) => {
+
+//DETALLES RESTAURANTE (USER INDEX)
+
+router.get('/restaurant-detail/:id', (req, res, next) => {
     const id = req.params.id
     Restaurant.findById(id)
 
         .then(resdetail => res.render('user/detalles', resdetail))
-        .catch(err => console.log("ERRORR", err))
+        .catch(err => next(err))
 })
+
+
 
 //USER UPDATE
 router.get('/update-user/:id', (req, res, next) => {
@@ -46,6 +52,9 @@ router.post('/update-user/:id', (req, res) => {
         .catch(err => next(err))
 })
 
+
+
+
 //USER DELETE
 router.get('/delete-user/:id', (req, res, next) => {
 
@@ -63,12 +72,10 @@ router.get('/logout', (req, res, next) => {
 
 
 
-
+//PEDIDO USUARIO
 router.post('/order/:id', (req, res) => {
     const resId = req.params.id
-    const userId = req.user.id
-    const name = req.user.name
-    const email = req.user.email
+    const { userId, name, email } = req.user
 
     const { starter, main, dessert, price } = req.body
     const date = new Date()
@@ -80,8 +87,8 @@ router.post('/order/:id', (req, res) => {
         text: `Su pedido es: ${starter}, ${main}, ${dessert} y el precio es de: ${price}`,
 
     })
-        .then(info => console.log('INFORMACIÓN DEL ENVÍO', info))
-        .catch(err => console.log('HUBO UN ERROR:', err))
+        .then(info => info)
+        .catch(err => next(err))
 
     Order.create({ starter, main, dessert, price, userId, date })
         .then(newOrder => {

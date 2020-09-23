@@ -1,170 +1,184 @@
- <button class="btn btn-outline-primary my-3 mr-3 float-right" data-toggle="modal" data-target="#loginModal">Actualiza tus datos</button>
-<div class="container py-5">
-    <div class="d-flex justify-content-center my-3">
-        <form action="/restaurant/clear-menu/{{user._id}}" method="post">
-        <button class='btn btn-primary'type="submit">Borra el menú anterior antes de actualizar</button>
-    </form>
-    </div>
-    
-    <div class='d-flex justify-content-center'>
-        <div class='menu-container text-center pt-2'>
-            <h3>Logo del restaurante aquí</h3>
-            <div class= 'text-left mt-5 p-4'>
-                <h5>Primeros</h5>
-            <ul>
-                {{#each user.dailyMenu.starters}}
-                <li>{{this.name}}</li>
-                {{/each}}
-            </ul>
-            <h5>Segundos</h5>
-            <ul>
-                {{#each user.dailyMenu.main}}
-                <li>{{this.name}}</li>
-                {{/each}}
-            </ul>
-            <h5>Postres</h5>
-            <ul>
-                {{#each user.dailyMenu.dessert}}
-                <li>{{this.name}}</li>
-                {{/each}}
-            </ul>
-                {{!-- <p>$(today)</p> --}}
-               
-                <h4 class= 'float-right'>Precio {{user.dailyMenu.price}}€</h4>
-
-            </div>
-            
-
-            
-
-        </div>
-
-    </div>
-    
+<section class='blue'>
 
 
-    <p>Añade los platos uno a uno</p>  
-    <form  class= 'd-flex justify-content-between align-items-center bg-light'action="/restaurant/update-dish/{{user._id}}" method="POST">
-       
-        <div class="form-group">
-            <label for="">Primero, segundo, postre </label>     
-            <select class="form-control form-control-sm d-block" name="type" id="">
-                <option value="starters">Primero</option>
-                <option value="main">Principal</option>
-                <option value="desert">Postre</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="">Nombre</label>
-            <input class="form-control form-control-sm d-block" type="text" name='dishName' placeholder="Nombre del plato">
-        </div>
-        <div class="form-group">
-            <label for="">Categoría</label>
-            <select class='form-control form-control-sm d-block' name="category" id="">
-                <option value="ensalada">ensalada</option>
-                <option value="sopa">sopa</option>
-                <option value="pasta">pasta</option>
-                <option value="crema">crema</option>
-                <option value="pescado">pescado</option>
-                <option value="carne">carne</option>
-                <option value="guiso">guiso</option>
-                <option value="cocido">cocido</option>
-                <option value="huevos">huevos</option>
-            </select>
-        </div>
+    <button class="btn btn-outline-primary my-3 mr-3 float-right" data-toggle="modal"
+        data-target="#loginModal">Actualiza
+        tus datos</button>
 
-        <button  class= 'btn btn-primary'type="submit">Añadir plato</button>
-     </form>
+    <div class="container py-5">
+        <div class="d-flex justify-content-center my-3">
 
-    <form action="/restaurant/update-menu/{{user._id}}" method="POST">
-    <div class= 'd-flex justify-content-between align-items-center bg-light'>
-        <label for="date">Fecha</label><br>
-        <input type="date" name='date' ><br><br>
-        {{!-- ojo con la fecha meter arriba value="today" que viene del script --}}
-        <label for="price">Precio</label><br>
-        <input type="number" name="price"><br><br>
-    </div>
-
-    <button class= 'btn btn-primary btn-block' type="submit">Actualizar</button>
-
-    
-    </form>
-
-
-</div>
-
- <div class="modal" id="loginModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Actualiza tus datos</h5>
-            <button class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-    
-              <form action="/restaurant/update-details/{{user._id}}" method="POST">
-            <div class="form-group">
-                <label for="name">Nombre</label>
-                <input type="text" class='form-control' name="name" placeholder="nombre" value={{user.name}}>
-            </div>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class='form-control' name="username" placeholder="Userame"value={{user.username}}>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class='form-control' name="email" placeholder="Email"value={{user.email}}>
-            </div>
-            <div class="form-group">
-                <label for="phone">Telefono</label>
-                <input type="number" class='form-control' name="phone" placeholder="Telefono"value={{user.phone}}>
-            </div>
-            <div class="form-group">
-                <label for="opening">Horario</label>
-                <input type="text" class='form-control' name="opening" placeholder="Horario"value={{user.opening}}>
-            </div>
-            <div class="form-group">
-                <label for="address">Direccion</label>
-                <input type="text" class='form-control' name="address" placeholder="Direccion"value={{user.address}}>
-            </div>
-            <div class="form-group">
-                <label for="location">Localizacion</label>
-                <input type="text" class='form-control' name="latitude" placeholder="latitude" value={{user.location.coordinates.[1]}}>
-                <br>
-                <input type="text" class='form-control' name="longitude" placeholder="longitude" value={{user.location.coordinates.[0]}}>
-            </div>
-            <div class="form-group">
-                <label for="logo">Logo</label>
-                <input type="text" class='form-control' name="logo" placeholder="Logo url" value={{user.logo}}>
-            </div>
-            {{#if message}}
-            <p style="color: red">{{ message }}</p>
-            {{/if}}
-            
-          </div>
-          <div class="modal-footer">
-            <button class='btn btn-primary'>actualizar</button>
+            <form action="/restaurant/clear-menu/{{user._id}}" method="post">
+                <button class='btn btn-primary' type="submit">Borra el menú anterior antes de actualizar</button>
             </form>
-          </div>
         </div>
-      </div>
+
+        <div class='d-flex justify-content-center'>
+            <div class='menu-container text-center pt-2'>
+
+                <h3>Logo del restaurante aquí</h3>
+                <div class='text-left mt-5 p-4'>
+                    <img src="../../{{user.logo}}" alt="">
+
+                    <h5>Primeros</h5>
+                    <ul>
+                        {{#each user.dailyMenu.starters}}
+                        <li>{{this.name}}</li>
+                        {{/each}}
+                    </ul>
+                    <h5>Segundos</h5>
+                    <ul>
+                        {{#each user.dailyMenu.main}}
+                        <li>{{this.name}}</li>
+                        {{/each}}
+                    </ul>
+                    <h5>Postres</h5>
+                    <ul>
+                        {{#each user.dailyMenu.dessert}}
+                        <li>{{this.name}}</li>
+                        {{/each}}
+                    </ul>
+                    {{!-- <p>$(today)</p> --}}
+
+                    <h4 class='float-right'>Precio {{user.dailyMenu.price}}€</h4>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <p>Añade los platos uno a uno</p>
+        <form class='d-flex justify-content-between align-items-center bg-light'
+            action="/restaurant/update-dish/{{user._id}}" method="POST">
+
+            <div class="form-group">
+                <label for="">Primero, segundo, postre </label>
+                <select class="form-control form-control-sm d-block" name="type" id="">
+                    <option value="starters">Primero</option>
+                    <option value="main">Principal</option>
+                    <option value="desert">Postre</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="">Nombre</label>
+                <input class="form-control form-control-sm d-block" type="text" name='dishName'
+                    placeholder="Nombre del plato">
+            </div>
+
+            <div class="form-group">
+                <label for="">Categoría</label>
+                <select class='form-control form-control-sm d-block' name="category" id="">
+                    <option value="ensalada">ensalada</option>
+                    <option value="sopa">sopa</option>
+                    <option value="pasta">pasta</option>
+                    <option value="crema">crema</option>
+                    <option value="pescado">pescado</option>
+                    <option value="carne">carne</option>
+                    <option value="guiso">guiso</option>
+                    <option value="cocido">cocido</option>
+                    <option value="huevos">huevos</option>
+                </select>
+            </div>
+            <button class='btn btn-primary' type="submit">Añadir plato</button>
+        </form>
+
+        <form action="/restaurant/update-menu/{{user._id}}" method="POST">
+            <div class='d-flex justify-content-between align-items-center bg-light'>
+                <label for="date">Fecha</label><br>
+                <input type="date" name='date'><br><br>
+                {{!-- ojo con la fecha meter arriba value="today" que viene del script --}}
+                <label for="price">Precio</label><br>
+                <input type="number" name="price"><br><br>
+            </div>
+
+            <button class='btn btn-primary btn-block' type="submit">Actualizar</button>
+        </form>
     </div>
-  </div>
+
+
+    <div class="modal" id="loginModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Actualiza tus datos</h5>
+                    <button class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+
+                    <form action="/restaurant/update-details/{{user._id}}" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" class='form-control' name="name" placeholder="nombre"
+                                value={{user.name}}>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class='form-control' name="username" placeholder="Userame"
+                                value={{user.username}}>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class='form-control' name="email" placeholder="Email"
+                                value={{user.email}}>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefono</label>
+                            <input type="number" class='form-control' name="phone" placeholder="Telefono"
+                                value={{user.phone}}>
+                        </div>
+                        <div class="form-group">
+                            <label for="opening">Horario</label>
+                            <input type="text" class='form-control' name="opening" placeholder="Horario"
+                                value={{user.opening}}>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Direccion</label>
+                            <input type="text" class='form-control' name="address" placeholder="Direccion"
+                                value={{user.address}}>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Localizacion</label>
+                            <input type="text" class='form-control' name="latitude" placeholder="latitude"
+                                value={{user.location.coordinates.[1]}}>
+                            <br>
+                            <input type="text" class='form-control' name="longitude" placeholder="longitude"
+                                value={{user.location.coordinates.[0]}}>
+                        </div>
+                        <div class="form-group">
+                            <label for="logo">Logo</label>
+                            <input type="file" class='form-control' name="logo" placeholder="Logo url">
+                            {{!-- <input type="text" class='form-control' name="logo" placeholder="Logo url" value={{user.logo}}> --}}
+                        </div>
+                        {{#if message}}
+                        <p style="color: red">{{ message }}</p>
+                        {{/if}}
+
+                </div>
+                <div class="modal-footer">
+                    <button class='btn btn-primary'>actualizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
 
 
 
-    
+
 
 <script>
-    var today = {{user.dailyMenu.date}};
+    var today = {{ user.dailyMenu.date }};
     console.log(today)
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
 
     today = dd + '/' + mm + '/' + yyyy;
-    {//document.getElementById('dateMenu').innerHTML = today --}}
+
+    //document.getElementById('dateMenu').innerHTML = today 
+
 </script>
-
-
-

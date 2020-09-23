@@ -1,33 +1,41 @@
 <section class="signUp">
     <article class="center-form py-5">
+
         <h2>Registate</h2>
+
         <form action="/user-signup" method="POST">
+
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class='form-control' name="name" placeholder="Name">
             </div>
+
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class='form-control' name="username" placeholder="Userame">
             </div>
+
             <div class="form-group">
                 <label for="password">Contraseña</label>
                 <input type="password" class='form-control' name="password" placeholder="Password">
             </div>
+
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class='form-control' name="email" placeholder="Email">
             </div>
+
             <div class="form-group">
                 <label for="phone">Telefono</label>
                 <input type="number" class='form-control' name="phone" placeholder="Telefono">
             </div>
+
             {{#if message}}
             <p style="color: red">{{ message }}</p>
             {{/if}}
-            <button type='submit'class='btn btn-primary'>Registrar</button>
+
+            <button type='submit' class='btn btn-primary'>Registrar</button>
             <p>Ya tienes cuenta??? <a href="/login-user"> Inicia sesion</a></p>
         </form>
-
     </article>
 </section>
