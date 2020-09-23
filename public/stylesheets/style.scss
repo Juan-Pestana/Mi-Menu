@@ -46,6 +46,7 @@ body {
 #buscar {
   display: block;
   margin: 1em auto;
+  width: 15%;
 }
 #restaurantsMap {
   height: 475px;
@@ -53,43 +54,48 @@ body {
   margin: 0 auto;
   border: 2px solid black;
 }
-.flex-header {
-  display: flex;
-  justify-content: space-around;
-}
+
 .index-user {
   text-align: center;
   background-color: #262b5a;
   color: white;
+  height: 800px;
 }
-.comanda{
-  // width: 20%;
-  padding:1em;
-
-background-image: url('../images/gorro.jpg');
-background-size: 100% 100%;
-background-repeat: no-repeat;
-background-color: rgba(255, 255, 255, 0.3);
-// opacity: 0.3;
- 
-
-}
-.profile-user {
+.box-profile {
   background-color: white;
-  
-  // padding: 2%;
-  // margin-bottom: 2%;
-  // width: 100%;
-  // margin: 0 auto;
   color: black;
+  height: 820px;
+  padding: 1%;
+}
+.box {
+  padding: 1%;
+  background-color: rgb(236, 238, 243);
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+.box p {
+  font-size: 0.8em;
+}
+.flex{
+  display:flex
+}
+
+.profile-user {
+  margin-left:-15px;
+  background-color:  #262b5a;
+  color: white;
+  margin-bottom: 10em;
 }
 .profile-user li {
   list-style: none;
+  padding-right: 20px;
 }
 .profile-user li a {
-  color: black;
+
+  color: white;
   font-size: x-large;
   text-decoration: none;
+
 }
 .profile-user li a:hover {
   color: #262b5a;
@@ -101,7 +107,7 @@ background-color: rgba(255, 255, 255, 0.3);
   background-color: #262b5a;
   display: flex;
   justify-content: space-evenly;
-  height: 700px;
+  height: 500px;
 }
 .info-restaurant {
   border: 2px solid black;
@@ -110,11 +116,12 @@ background-color: rgba(255, 255, 255, 0.3);
   background-color: white;
   text-align: center;
   height: 400px;
+  padding:2em;
   margin-top: 5em;
 }
-.info-restaurant li{
+.info-restaurant li {
   list-style: none;
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid black;
 }
 
 // Form pedido
@@ -123,7 +130,7 @@ background-color: rgba(255, 255, 255, 0.3);
   border: 2px solid black;
   width: 20%;
   margin: 0 auto;
-  padding:2%
+  padding: 2%;
 }
 .choose {
   display: block;
@@ -134,14 +141,18 @@ background-color: rgba(255, 255, 255, 0.3);
 }
 .valuePrice {
   display: block;
-  width:30%;
-  margin:0 auto;
+  width: 30%;
+  margin: 0 auto;
   text-align: center;
 }
+// .blue{
+//   background-color: #262b5a;;
+// }
 
 .menu-container {
   height: 550px;
   border: 2px solid rgb(49, 48, 48);
   border-radius: 10px;
-  width: 500px
+  width: 500px;
+  // background-color:white;
 }

@@ -1,7 +1,9 @@
 <section class='detail-rest'>
     <article class='info-restaurant'>
-        <h2>Informacion del restaurante:</h2>
+
+        <h2>Informacion del restaurante</h2>
         <hr>
+
         {{!-- <img src="{{logo}}" alt="logo"> --}}
         <p>Nombre: <span>{{name}}</span></p>
         <p>Direccion: <span>{{address}}</span></p>
@@ -11,30 +13,28 @@
     </article>
 
     <article class='info-restaurant'>
-        <h2>Menu:</h2>
+        <h2>Menu</h2>
         <hr>
         <ul>
-            {{!-- {{ resdetail}} --}}
-            <li>Entrantes:
+            <li>Entrantes
                 {{#each dailyMenu.starters}}
                 <p>{{this.name}}</p>
                 {{/each}}
             </li>
-            <li>Principales:
+            <li>Principales
                 {{#each dailyMenu.main}}
                 <p>{{this.name}}</p>
                 {{/each}}
             </li>
-            <li>Postres:
+            <li>Postres
                 {{#each dailyMenu.dessert}}
                 <p>{{this.name}}</p>
                 {{/each}}
             </li>
         </ul>
-        <p>Precio: {{dailyMenu.price}}$</p>
+        <p>Precio {{dailyMenu.price}}$</p>
     </article>
 </section>
-
 
 <form class='pedido' action="/user/order/{{_id}}" method="post">
 
@@ -65,11 +65,7 @@
         </select>
     </div>
 
-
     <p class='textPrice'>Precio</p>
     <input class='valuePrice' type="number" name='price' value="{{dailyMenu.price}}" readonly>
-
-
     <button type='submit' class='btn btn-primary' id='buscar'>Pedir</button>
-
 </form>
