@@ -14,6 +14,8 @@ function initMap() {
         //getCurrentPosition(successCallback, failureCallback)
         navigator.geolocation.getCurrentPosition(
             position => {
+
+                console.log(position)
                 center = { lat: position.coords.latitude, lng: position.coords.longitude }
                 map.setCenter(center)
                 new google.maps.Marker({ map, position: center })

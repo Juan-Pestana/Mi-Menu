@@ -1,14 +1,17 @@
 const express = require('express')
 const router = express.Router()
-const localUploader = require('./../configs/local-upload.config')
+
+// const localUploader = require('./../configs/local-upload.config')
+const cdnUploader = require('./../configs/cloudinary.config')
+
 const Restaurant = require("../models/restaurant.model")
 
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/restaurant-login', { message: 'Desautorizado, incia sesión para continuar' })
 const checkIsRestaurant = (req, res, next) => req.user.dailyMenu ? next() : res.render('auth/restaurant-login', { message: 'Desautorizado, incia sesión para continuar' })
 
-router.get("/index",checkLoggedIn, checkIsRestaurant, (req, res) => {
-    
-    res.render('restaurant/restaurant-index', { user : req.user, key: process.env.KEY })
+router.get("/index", checkLoggedIn, checkIsRestaurant, (req, res) => {
+
+    res.render('restaurant/restaurant-index', { user: req.user, key: process.env.KEY })
 })
 
 
@@ -96,9 +99,9 @@ router.post('/clear-menu/:id', (req, res) => {
 
 
 
-//-------------Update Restaurant Profile-----------------
+//-------------Update Restaurant Profile-----------------       //Aqui----------------------------
 
-router.post('/update-details/:id', localUploader.single('logo'), (req, res) => {
+router.post('/update-details/:id', cdnUploader.single('logo'), (req, res) => {
 
     const id = req.params.id
     const dailyMenu = req.user.dailyMenu
@@ -107,8 +110,11 @@ router.post('/update-details/:id', localUploader.single('logo'), (req, res) => {
         type: 'Point',
         coordinates: [req.body.longitude, req.body.latitude]
     }
-    let logo = `/uploads/${req.file.filename}`
-    let { name, username, email, phone, address, opening, photos} = req.body
+    // let logo = `/uploads/${req.file.filename}`
+    const logo = req.file.path
+
+
+    let { name, username, email, phone, address, opening, photos } = req.body
     let infoToUpdate = { name, username, email, phone, address, opening, photos, logo, location, dailyMenu }
 
     Restaurant.findByIdAndUpdate(id, infoToUpdate)
