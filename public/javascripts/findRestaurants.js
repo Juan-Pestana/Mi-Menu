@@ -14,8 +14,18 @@ function drawMap(restaurants) {
         {
             center: { lat: 0, lng: 0 },
             zoom: 17
-        }
-    )
+        })
+
+            //getCurrentPosition(successCallback, failureCallback)
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    center = { lat: position.coords.latitude, lng: position.coords.longitude }
+                    map.setCenter(center)
+                    new google.maps.Marker({ map, position: center })
+                },
+                err => console.log('No se pudo acceder a la localización:', err)
+            )} 
+    
 
     restaurants.forEach(elm => {
 
@@ -27,5 +37,5 @@ function drawMap(restaurants) {
         new google.maps.Marker({ map, position: center })
     })
 
-    map.setCenter({ lat: restaurants[0].location.coordinates[1], lng: restaurants[0].location.coordinates[0] })
-}
+   map.setCenter({ lat: restaurants[0].location.coordinates[1], lng: restaurants[0].location.coordinates[0] })
+
