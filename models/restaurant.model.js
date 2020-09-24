@@ -4,11 +4,11 @@ const Schema = mongoose.Schema
 const restaurantSchema = new Schema({
     name: {
         type: String,
-        required: true,
+        default:'Restaurant'
     },
     username: {
         type: String,
-        required: true,
+        default:'User Restaurant'
     },
     password: {
         type: String,
@@ -16,7 +16,14 @@ const restaurantSchema = new Schema({
     },
     email: {
         type: String,
-        required: true,
+        validate: {
+            validator: function (val) {
+                let email = new RegExp("[a-zA-Z0-9_.-]+@+[a-zA-Z0-9_.-]+.+[a-zA-Z]{2,4}")
+                return email.test(val);
+            },
+            message: props => `${props.value} is not a valid email!`
+        },
+        required: [true, 'User email required']
     },
     phone: {
         type: String,
@@ -32,6 +39,7 @@ const restaurantSchema = new Schema({
     },
     logo: {
         type: String,
+        default:'https://res.cloudinary.com/dpflfpgcj/image/upload/v1600860303/rhdk0pcccz9ttxbmykxy.jpg'
 
     },
     address: {
