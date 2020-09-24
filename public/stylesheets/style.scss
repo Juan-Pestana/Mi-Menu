@@ -21,7 +21,6 @@ body {
   background: url(../images/image3.jpg);
   background-size: cover;
 }
-
 //formulario registro
 .center-form {
   width: 40%;
@@ -42,7 +41,6 @@ body {
   padding: 10%;
 }
 //perfil usuario
-
 #buscar {
   display: block;
   margin: 1em auto;
@@ -67,7 +65,6 @@ margin:0 auto
 .box-acc{
   padding:8px
 }
-
 .index-user {
   text-align: center;
   background-color: #262b5a;
@@ -77,15 +74,14 @@ margin:0 auto
 .box-profile {
   background-color: white;
   color: black;
-  height: 800px;
-  margin-left: 1em;
-  padding: 0px
-
+  height: 820px;
+  padding: 1%;
 }
 .box {
   padding: 1%;
   background-color: rgb(236, 238, 243);
   margin-bottom: 1em;
+  margin-left: 1em;
 }
 .box p {
   font-size: 0.8em;
@@ -96,7 +92,6 @@ margin:0 auto
 .flex {
   display: flex;
 }
-
 .profile-user {
   margin-left: -15px;
   background-color: #262b5a;
@@ -115,9 +110,7 @@ margin:0 auto
 .profile-user li a:hover {
   color: #262b5a;
 }
-
 //Detalles Restaurante
-
 .detail-rest {
   background-color: #262b5a;
 }
@@ -133,7 +126,7 @@ margin:0 auto
   text-align: center;
 }
 .dish {
-  // margin:-10px;
+  margin:0;
   font-size: 1.5em;
 }
 .box-menu {
@@ -146,7 +139,6 @@ margin:0 auto
 .total {
   background-color: rgb(245, 107, 107);
 }
-
 .info-restaurant img {
   width: 100px;
   height: 70px;
@@ -163,9 +155,7 @@ margin:0 auto
 .rest-info p {
   padding: 0 1em;
 }
-
 // Form pedido
-
 .pedido {
   // border: 2px solid black;
   width: 54%;
@@ -190,7 +180,6 @@ margin:0 auto
 // .blue{
 //   background-color: #262b5a;;
 // }
-
 .menu-container {
   height: 550px;
   border: 2px solid rgb(49, 48, 48);
