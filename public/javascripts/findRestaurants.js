@@ -1,27 +1,5 @@
 ApiHandler= new ApiHandler()
 
-// const meters = document.querySelector('#meters').value
-
-
-
-
-//     ApiHandler.getLocalitation(center, meters)
-//     .then(response => {
-
-//         drawMap(response.data)
-//     })
-        
-//     .catch(err => console.log('Hubo un error:', err))
-
-
-
-
-// let map
-//  const buscar = () => {
-
-    // axios.post('/api/restaurants/')
-    //     .then(response => drawMap(response.data))
-    //     .catch(err => console.log('Hubo un error:', err))
 
  
 
@@ -57,14 +35,10 @@ function drawMap(restaurants) {
                 }
                 new google.maps.Marker({ map, position: center })
             })
-            // .catch(err => console.log('Hubo un error:', err))
-                // 
 
-                // 
 
             } 
 
-// let meters = document.querySelector('#meters').value 
 window.addEventListener('load', ()=>{
     // console.log(center)
 
@@ -79,7 +53,8 @@ window.addEventListener('load', ()=>{
                     let text = ''
                     response.data.forEach(elem =>{
                         text += `<li>
-                        <a href="/user/restaurant-detail/${elem._id}"><img src=${elem.logo}></a>
+                        <a href="/user/restaurant-detail/${elem._id}"><img src=${elem.logo}>
+                        <p>${elem.name}</p></a>   
                     </li>`
                     })
 
