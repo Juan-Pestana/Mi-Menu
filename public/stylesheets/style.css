@@ -69,14 +69,14 @@ body {
 .box-profile {
   background-color: white;
   color: black;
-  height: 820px;
-  padding: 1%; }
+  height: 800px;
+  margin-left: 1em;
+  padding: 0px; }
 
 .box {
   padding: 1%;
   background-color: #eceef3;
-  margin-bottom: 1em;
-  margin-left: 1em; }
+  margin-bottom: 1em; }
 
 .box p {
   font-size: 0.8em; }
