@@ -1,71 +1,87 @@
 <section class='detail-rest'>
-    <article class='info-restaurant'>
 
-        <h2>Informacion del restaurante</h2>
-        <hr>
-
-        {{!-- <img src="{{logo}}" alt="logo"> --}}
-        <p>Nombre: <span>{{name}}</span></p>
-        <p>Direccion: <span>{{address}}</span></p>
-        <p>Telefono: <span>{{phone}}</span></p>
-        <p>Email: <span>{{email}}</span></p>
-        <p>Horario: <span>{{opening}}</span></p>
-    </article>
-
-    <article class='info-restaurant'>
+    <article class='info-restaurant '>
+        <h1>{{name}}</h1>
+        <img src="{{logo}}" alt="logo">
         <h2>Menu</h2>
         <hr>
-        <ul>
-            <li>Entrantes
-                {{#each dailyMenu.starters}}
-                <p>{{this.name}}</p>
-                {{/each}}
-            </li>
-            <li>Principales
-                {{#each dailyMenu.main}}
-                <p>{{this.name}}</p>
-                {{/each}}
-            </li>
-            <li>Postres
-                {{#each dailyMenu.dessert}}
-                <p>{{this.name}}</p>
-                {{/each}}
-            </li>
-        </ul>
-        <p>Precio {{dailyMenu.price}}$</p>
-    </article>
-</section>
-
-<form class='pedido' action="/user/order/{{_id}}" method="post">
-
-    <div class="form-group">
-        <label class='choose' for="pedido">Elige</label>
-        <select class="form-control" id="" name="starter">
+        <div class='box-menu'>
+            <h3 class='head-menu'>Entrantes </h3>
             {{#each dailyMenu.starters}}
-            <option value="{{this.name}}">{{this.name}}</option>
+            <p class='dish'>{{this.name}}</p>
             {{/each}}
-        </select>
-    </div>
 
-    <div class="form-group">
-
-        <select class="form-control" id="" name="main">
+        </div>
+        <div class='box-menu'>
+            <h3 class='head-menu'>Principales</h3>
             {{#each dailyMenu.main}}
-            <option value="{{this.name}}">{{this.name}}</option>
+            <p class='dish'>{{this.name}}</p>
             {{/each}}
-        </select>
-    </div>
 
-    <div class="form-group">
+        </div>
 
-        <select class="form-control" id="" name="dessert">
+        <div class='box-menu'>
+            <h3 class='head-menu'>Postres</h3>
             {{#each dailyMenu.dessert}}
-            <option value="{{this.name}}">{{this.name}}</option>
+            <p class='dish'>{{this.name}}</p>
             {{/each}}
-        </select>
-    </div>
 
-    <p class='textPrice'>Precio</p>
-    <input class='valuePrice' type="number" name='price' value="{{dailyMenu.price}}" readonly>
-    <button type='submit' class='btn btn-primary' id='buscar'>Pedir</button>
-</form>
+        </div>
+
+
+        <h3 class='total dish'>Precio {{dailyMenu.price}}$</h3>
+    </article>
+
+    <form class='pedido' class='d-flex justify-content-between align-items-center bg-light pedido' action="/user/order/{{_id}}" method="post">
+
+        <div class="form-group">
+            <label class='choose' for="pedido">Elige</label>
+            <select class="form-control" id="" name="starter">
+                {{#each dailyMenu.starters}}
+                <option value="{{this.name}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <select class="form-control" id="" name="main">
+                {{#each dailyMenu.main}}
+                <option value="{{this.name}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <select class="form-control" id="" name="dessert">
+                {{#each dailyMenu.dessert}}
+                <option value="{{this.name}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <p class='textPrice'>Precio $</p>
+        <input class='valuePrice' type="number" name='price' value="{{dailyMenu.price}}" readonly>
+        <button type='submit' class='btn btn-dark' id='buscar'>Pedir</button>
+    </form>
+
+
+    <article class='info-restaurant2'>
+
+        <hr>
+        <div class='rest-info'>
+
+            <p class='dish'>Direccion: <span>{{address}}</span></p>
+            <p class='dish'>Telefono: <span>{{phone}}</span></p>
+            <p class='dish'>Email: <span>{{email}}</span></p>
+            <p class='dish'>Horario: <span>{{opening}}</span></p>
+
+        </div>
+        <form action="/user/add-favourites/{{_id}}" method='post'>
+            <p class='dish'>Enviar a favoritos</p>
+            <input type='submit' class="btn btn-sm btn-dark">
+        </form>
+    </article>
+
+</section>

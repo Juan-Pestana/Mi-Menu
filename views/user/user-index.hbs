@@ -3,51 +3,115 @@
 
         <div class="row">
             <div class="col-2 box-profile">
-                <div class=>
+                <div>
                     <article class='box'>
                         <h1>Bienvenido {{user.name}}</h1>
                         <hr>
                         <p>Email:{{user.email}}</p>
                         <p>Telefono: {{user.phone}}</p>
+
                         <a class="btn btn-sm btn-dark" href="/user/update-user/{{user._id}}">Actualizar</a>
                         <a class="btn btn-sm btn-dark" href="/user/delete-user/{{user._id}}">Eliminar</a>
                         <a class="btn btn-sm btn-dark" href="/user/logout">Cierra Sesion</a>
+                        <div id="accordion" class='box-acc'>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>
+                                        <a href="#collapse1" class='favoritos' data-parent="#accordion"
+                                            data-toggle="collapse">
+                                            Favoritos
+                                        </a>
+                                    </h5>
+                                </div>
+
+                                <div id="collapse1" class="collapse show">
+                                    <div class="card-body">
+                                        <ul>
+                                            <li class='favoritos-rest'>
+                                                {{#each user.favRestaurants}}
+                                                <a href='/user/restaurant-detail/{{this._id}}'><img src="{{this.logo}}" alt="{{this.name}}"></a>
+                                                {{/each}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </article>
 
 
-                    <div class='box'>
+
+                    <div id="accordion" >
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>
+                                    <a href="#collapse2" class='favoritos'data-parent="#accordion" data-toggle="collapse">
+                                       Pedidos
+                                    </a>
+                                </h5>
+                            </div>
+
+                            <div id="collapse2" class="collapse">
+                                <div class="card-body">
+                                  <p>{{user.order.starter}}</p>
+                                        <p>{{user.order.main}}</p>
+                                        <p>{{user.order.dessert}}</p>
+                                        <p>precio: {{user.order.price}}€</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                        <div id="accordion" class='box-ac'>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>
+                                        <a href="#collapse1" class='favoritos' data-parent="#accordion"
+                                            data-toggle="collapse">
+                                            
+                                        </a>
+                                    </h5>
+                                </div>
+
+                                <div id="collapse1" class="collapse show">
+                                    <div class="card-body">
+
+                                        
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{!-- <div class='box'>
                         <h2>Pedidos</h2>
                         <hr>
-                        <p>{{user.order.starter}}</p>
-                        <p>{{user.order.main}}</p>
-                        <p>{{user.order.dessert}}</p>
-                        <p>precio: {{user.order.price}}€</p>
-                    </div>
-                </div>
 
-            </div>
-            <div class="col-10">
-                <div class='profile-user'>
-                    <h2>Lista de Restaurantes cercanos</h2>
-                    
-                    <ul class='flex'>
-                        {{#each restaurant}}
-                        <li>
-                            <a href="/user/restaurant-detail/{{this._id}}">{{this.name}}</a>
-                        </li>
-                        {{/each}}
-                        {{!-- <a class="btn btn-sm btn-dark" href="/user/favoritos/{{user._id}}">ver favoritos</a> --}}
-                    </ul>
+                    </div> --}}
+                    </div>
+
                 </div>
+                <div class="col-10">
+                    <div class='profile-user'>
+                        <h2>Lista de Restaurantes cercanos</h2>
+
+                        <ul class='flex'>
+                            {{#each restaurant}}
+                            <li>
+                                <a href="/user/restaurant-detail/{{this._id}}">{{this.name}}</a>
+                            </li>
+                            {{!-- <a class="btn btn-sm btn-dark" href="/user/index/{{_id}}">Añadir a favoritos</a> --}}
+                            {{/each}}
+                            {{!-- <a class="btn btn-sm btn-dark" href="/user/favoritos/{{user._id}}">ver favoritos</a> --}}
+                        </ul>
+                    </div>
                     <div id="restaurantsMap"></div>
                     <button class='btn btn-primary' id='buscar'>Buscar</button>
-
+                </div>
             </div>
-        </div>
-
-
-
-
     </section>
 </main>
 

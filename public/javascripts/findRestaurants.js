@@ -2,7 +2,7 @@ let map
 const buscar = () => {
     axios.get('/api/restaurants')
         .then(response => drawMap(response.data))
-        .catch(err => console.log('Hubo un error:', err))
+        .catch(err => document.write(err))
 
 }
 

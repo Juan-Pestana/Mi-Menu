@@ -15,15 +15,14 @@ function initMap() {
         navigator.geolocation.getCurrentPosition(
             position => {
 
-                console.log(position)
                 center = { lat: position.coords.latitude, lng: position.coords.longitude }
                 map.setCenter(center)
                 new google.maps.Marker({ map, position: center })
             },
-            err => console.log('No se pudo acceder a la localización:', err)
+            err => next(err)
         )
 
-    } else {
-        console.log('Unable to reach geolocation module')
-    }
+    }// else {
+     //   console.log('Unable to reach geolocation module')
+   // }
 }
