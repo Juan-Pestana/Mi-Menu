@@ -120,6 +120,7 @@ body {
   text-align: center; }
 
 .dish {
+  margin: 0;
   font-size: 1.5em; }
 
 .box-menu {

@@ -95,7 +95,7 @@ router.post("/restaurant-signup", (req, res, next) => {
     const salt = bcrypt.genSaltSync(bcryptSalt)
     const hashPass = bcrypt.hashSync(password, salt)
 
-    Restaurant.create({ name, username, password: hashPass, email, phone, opening, photos, logo, address, location })
+    Restaurant.create({ name, username, password: hashPass, email, phone, opening, photos, address, location })
         .then(() => res.redirect('/restaurant-login'))
         .catch(error => next(error))
 })

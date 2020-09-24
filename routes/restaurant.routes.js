@@ -99,7 +99,7 @@ router.post('/clear-menu/:id', (req, res) => {
 
 
 
-//-------------Update Restaurant Profile-----------------       //Aqui----------------------------
+//-------------Update Restaurant Profile-----------------       
 
 router.post('/update-details/:id', cdnUploader.single('logo'), (req, res) => {
 
