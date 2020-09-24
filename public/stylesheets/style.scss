@@ -48,7 +48,7 @@ nav img{
   padding: 10%;
 }
 //perfil usuario
-#buscar {
+.buscar {
   display: block;
   margin: 1em auto;
   width: 15%;
@@ -201,6 +201,8 @@ nav img{
 }
 .menu-container img {
   width: 100px;
+  height: 50px;
+  object-fit: cover;
   display: block;
   margin: 0 auto;
 }

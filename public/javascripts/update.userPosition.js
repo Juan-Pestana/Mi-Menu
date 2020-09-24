@@ -8,7 +8,7 @@ class ApiHandler {
             })
     }
 getLocalitation(data){
-    console.log('esto es lo que le metemos a AXIOS', data)
+    // console.log('esto es lo que le metemos a AXIOS', data)
 return this.axiosServer.post("/restaurants",data)
 }
 }

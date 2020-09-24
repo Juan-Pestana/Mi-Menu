@@ -33,6 +33,11 @@ router.post("/user-signup", (req, res, next) => {
         res.render("auth/user-signup", { message: "Cumplimenta toda la información porfavor" })
         return
     }
+
+    if( email !== new RegExp("[a-zA-Z0-9_.-]+@+[a-zA-Z0-9_.-]+.+[a-zA-Z]{2,4}")){
+        res.render("auth/user-signup", { message: "Escribe email valido" })
+        return
+    }
     User.findOne({ username })
         .then(user => {
             if (user) {
@@ -83,6 +88,12 @@ router.post("/restaurant-signup", (req, res, next) => {
         res.render("auth/restaurant-signup", { message: "Cumplimenta toda la información porfavor" })
         return
     }
+    if( email !== new RegExp("[a-zA-Z0-9_.-]+@+[a-zA-Z0-9_.-]+.+[a-zA-Z]{2,4}")){
+        res.render("auth/restaurant-signup", { message: "Escribe email valido" })
+        return
+    }
+
+
     Restaurant.findOne({ username })
         .then(user => {
             if (user) {

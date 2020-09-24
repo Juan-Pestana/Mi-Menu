@@ -1,4 +1,4 @@
-ApiHandler= new ApiHandler()
+ApiHandler = new ApiHandler()
 
 // const meters = document.querySelector('#meters').value
 
@@ -10,7 +10,7 @@ ApiHandler= new ApiHandler()
 
 //         drawMap(response.data)
 //     })
-        
+
 //     .catch(err => console.log('Hubo un error:', err))
 
 
@@ -19,11 +19,11 @@ ApiHandler= new ApiHandler()
 // let map
 //  const buscar = () => {
 
-    // axios.post('/api/restaurants/')
-    //     .then(response => drawMap(response.data))
-    //     .catch(err => console.log('Hubo un error:', err))
+// axios.post('/api/restaurants/')
+//     .then(response => drawMap(response.data))
+//     .catch(err => console.log('Hubo un error:', err))
 
- 
+
 
 function drawMap(restaurants) {
 
@@ -33,75 +33,54 @@ function drawMap(restaurants) {
             zoom: 17
         })
 
-            // getCurrentPosition(successCallback, failureCallback)
-            
-            navigator.geolocation.getCurrentPosition(
-                position => {
-                    center = { lat: position.coords.latitude, lng: position.coords.longitude }
-                    // const coordinates = {lng: position.coords.longitude , lat: position.coords.latitude }
-                    map.setCenter(center)
-                    new google.maps.Marker({ map, position: center })
+    // getCurrentPosition(successCallback, failureCallback)
+    navigator.geolocation.getCurrentPosition(
+        position => {
+            center = { lat: position.coords.latitude, lng: position.coords.longitude }
+            // const coordinates = {lng: position.coords.longitude , lat: position.coords.latitude }
+            map.setCenter(center)
+            new google.maps.Marker({ map, position: center })
+        },
+        err => console.log('No se pudo acceder a la localización:', err)
+    )
 
-
-                    
-
-                    
-                },
-                err => console.log('No se pudo acceder a la localización:', err)
-            )
-
-            restaurants.forEach(elm => {
-                let center = {
-                    lat: elm.location.coordinates[1],
-                    lng: elm.location.coordinates[0]
-                }
-                new google.maps.Marker({ map, position: center })
-            })
-            // .catch(err => console.log('Hubo un error:', err))
-                // 
-
-                // 
-
-            } 
+    restaurants.forEach(elm => {
+        let center = {
+            lat: elm.location.coordinates[1],
+            lng: elm.location.coordinates[0]
+        }
+        new google.maps.Marker({ map, position: center })
+    })
+    // .catch(err => console.log('Hubo un error:', err))
+}
 
 // let meters = document.querySelector('#meters').value 
-window.addEventListener('load', ()=>{
+window.addEventListener('load', () => {
     // console.log(center)
-
-
-    document.querySelector('#search').addEventListener('click', function(event) {
-        let meters = document.querySelector('#meters').value 
+    document.querySelector('#search').addEventListener('click', function (event) {
+        let meters = document.querySelector('#meters').value
         center.distance = parseFloat(meters)
         ApiHandler.getLocalitation(center)
-                .then(response => {
+            .then(response => {
 
-                    console.log(response.data)
-                    let text = ''
-                    response.data.forEach(elem =>{
-                        text += `<li>
+                // console.log(response.data)
+                let text = ''
+                response.data.forEach(elem => {
+                    text += `<li>
                         <a href="/user/restaurant-detail/${elem._id}"><img src=${elem.logo}></a>
                     </li>`
-                    })
-
-                    document.querySelector('#lista').innerHTML = text
-
-
-
-    
-
-
-
-                    drawMap(response.data)
-                
-                
                 })
+
+                document.querySelector('#lista').innerHTML = text
+                drawMap(response.data)
+            })
     })
 
 })
-   
-    
 
-    
+
+
+
 
 
 
