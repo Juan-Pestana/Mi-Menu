@@ -122,6 +122,13 @@ router.post('/update-details/:id', cdnUploader.single('logo'), (req, res) => {
         .catch(err => next(err))
 })
 
+router.get("/orders", checkLoggedIn, checkIsRestaurant, (req, res) => {
+
+    res.render('restaurant/orders')
+
+})
+
+
 
 
 module.exports = router

@@ -104,46 +104,49 @@ router.post('/order/:id', (req, res, next) => {
         text: `Su pedido es: ${starter}, ${main}, ${dessert} y el precio es de: ${price}`,
     })
         .then(info => info)
-        
-
-
-    Order.create({ starter, main, dessert, price, userId, date })
+   Order.create({ starter, main, dessert, price, userId, date })
         .then(newOrder => {
-            let infoUpdate = req.user
+            const infoUpdate = req.user
             infoUpdate.order = newOrder._id
             User.findByIdAndUpdate(userId, infoUpdate)
-            .then(() => Restaurant.findById(resId))
-            .then((restInfo) =>{
-            restInfo.order.push(newOrder._id)
-            Restaurant.findByIdAndUpdate(resId, restInfo)}) 
-            .then(() => res.redirect('/user/index'))
-            .catch(err => next(err))
-        
+                // .populate('order')
+                //ojo que a lo mejor hay que traer la linea 100 de vuelta paqui
+                .then(() => {
+                    Restaurant.findById(resId)
+                        .then((restInfo) => {
+                            restInfo.order.push(newOrder._id)
+                            Restaurant.findByIdAndUpdate(resId, restInfo)
+                                .then(() => res.redirect('/user/index'))
+                        })
+                })
+                .catch(err => console.log(err))
         })
-        
-        
-    })
+})     
+
+
+    
 
 
 
 
 module.exports = router
 
+
+
+
 // Order.create({ starter, main, dessert, price, userId, date })
 //         .then(newOrder => {
-//             const infoUpdate = req.user
+//             let infoUpdate = req.user
 //             infoUpdate.order = newOrder._id
 //             User.findByIdAndUpdate(userId, infoUpdate)
-//                 // .populate('order')
-//                 //ojo que a lo mejor hay que traer la linea 100 de vuelta paqui
-//                 .then(() => {
-//                     Restaurant.findById(resId)
-//                         .then((restInfo) => {
-//                             restInfo.order.push(newOrder._id)
-//                             Restaurant.findByIdAndUpdate(resId, restInfo)
-//                                 .then(() => res.redirect('/user/index'))
-//                         })
-//                 })
-//                 .catch(err => console.log(err))
+//             .then(() => Restaurant.findById(resId))
+//             .then((restInfo) =>{
+//             restInfo.order.push(newOrder._id)
+//             Restaurant.findByIdAndUpdate(resId, restInfo)}) 
+//             .then(() => res.redirect('/user/index'))
+//             .catch(err => next(err))
+        
 //         })
-// })
+        
+        
+//     })

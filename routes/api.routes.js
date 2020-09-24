@@ -24,16 +24,21 @@ router.post('/restaurants', (req, res, next) => {
                  }
               }
           })
-        // .geoNear({type: "Point", coordinates:[-3.7007958999999997 , 40.4406743]}, {maxDistance : 50000, spherical: true})                     //// to do query restaurantes cercanos {Near}
         .then(response => res.json(response))
-          // 
+
         .catch(err => next(err))
 })
 
-// router.get('/orders/:_id', (req,res)=>{
+router.post('/orders', (req,res)=>{
+    id = req.user.id
 
-//     Restaurant.findById
+    Restaurant.findById(id)
+    .populate('order')
+    .then(response => {res.json(response.order)})
+      
+    .catch(err => next(err))
 
-// })
+
+})
 
  module.exports = router
