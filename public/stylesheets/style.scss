@@ -7,19 +7,25 @@ body {
   height: 823px;
 }
 .carousel-item {
-  height: 550px;
+  height: 600px;
 }
 .carousel-image-1 {
-  background: url(../images/image1.jpg);
+  background: url(../images/vista-exterior.jpg);
   background-size: cover;
 }
 .carousel-image-2 {
-  background: url(../images/image2.jpg);
-  background-size: 100% 100%;
+  background: url(../images/camarero.jpg);
+  background-size: cover;
 }
 .carousel-image-3 {
-  background: url(../images/image3.jpg);
+  background: url(../images/camarero.jpg);
   background-size: cover;
+}
+nav img{
+  height: 60px
+}
+#logo-index{
+  height: 250px;
 }
 //formulario registro
 .center-form {
@@ -62,6 +68,11 @@ display:block;
 width: 50px;
 margin:0 auto
 }
+
+#lista img{
+  height: 100px
+}
+
 .box-acc{
   padding:8px
 }
@@ -96,7 +107,7 @@ margin:0 auto
   margin-left: -15px;
   background-color: #262b5a;
   color: white;
-  margin-bottom: 10em;
+  margin-bottom: 3em;
 }
 .profile-user li {
   list-style: none;

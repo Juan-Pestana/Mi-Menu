@@ -74,7 +74,23 @@ window.addEventListener('load', ()=>{
         center.distance = parseFloat(meters)
         ApiHandler.getLocalitation(center)
                 .then(response => {
+
+                    console.log(response.data)
+                    let text = ''
+                    response.data.forEach(elem =>{
+                        text += `<li>
+                        <a href="/user/restaurant-detail/${elem._id}"><img src=${elem.logo}></a>
+                    </li>`
+                    })
+
+                    document.querySelector('#lista').innerHTML = text
+
+
+
     
+
+
+
                     drawMap(response.data)
                 
                 
