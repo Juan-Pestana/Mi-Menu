@@ -54,6 +54,19 @@ body {
   margin: 0 auto;
   border: 2px solid black;
 }
+.favoritos {
+  color:black;
+  text-decoration: none;
+}
+// -------------------------LOGOS--------------------
+.favoritos-rest a img{
+display:block;
+width: 50px;
+margin:0 auto
+}
+.box-acc{
+  padding:8px
+}
 
 .index-user {
   text-align: center;
@@ -76,13 +89,16 @@ body {
 .box p {
   font-size: 0.8em;
 }
-.flex{
-  display:flex
+.box li {
+  list-style: none;
+}
+.flex {
+  display: flex;
 }
 
 .profile-user {
-  margin-left:-15px;
-  background-color:  #262b5a;
+  margin-left: -15px;
+  background-color: #262b5a;
   color: white;
   margin-bottom: 10em;
 }
@@ -91,11 +107,9 @@ body {
   padding-right: 20px;
 }
 .profile-user li a {
-
   color: white;
   font-size: x-large;
   text-decoration: none;
-
 }
 .profile-user li a:hover {
   color: #262b5a;
@@ -105,39 +119,66 @@ body {
 
 .detail-rest {
   background-color: #262b5a;
-  display: flex;
-  justify-content: space-evenly;
-  height: 500px;
 }
 .info-restaurant {
-  border: 2px solid black;
-  border-radius: 5px;
-  width: 30%;
+  width: 50%;
   background-color: white;
   text-align: center;
-  height: 400px;
-  padding:2em;
-  margin-top: 5em;
+  padding: 2em;
+  margin: 0 auto;
 }
-.info-restaurant li {
-  list-style: none;
-  border-bottom: 1px solid black;
+.info-restaurant2 {
+  background-color: white;
+  text-align: center;
+}
+.dish {
+  // margin:-10px;
+  font-size: 1.5em;
+}
+.box-menu {
+  background-color: rgb(236, 238, 243);
+}
+.head-menu {
+  background-color: rgb(178, 184, 197);
+  font-weight: 600;
+}
+.total {
+  background-color: rgb(245, 107, 107);
+}
+
+.info-restaurant img {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  margin: -10px;
+}
+.info-restaurant2 hr {
+  width: 50%;
+}
+.rest-info {
+  display: flex;
+  justify-content: center;
+}
+.rest-info p {
+  padding: 0 1em;
 }
 
 // Form pedido
 
 .pedido {
-  border: 2px solid black;
-  width: 20%;
+  // border: 2px solid black;
+  width: 54%;
   margin: 0 auto;
   padding: 2%;
 }
 .choose {
   display: block;
   text-align: center;
+  color: white;
 }
 .textPrice {
   text-align: center;
+  color: white;
 }
 .valuePrice {
   display: block;
@@ -156,9 +197,8 @@ body {
   width: 500px;
   // background-color:white;
 }
-.menu-container img{
-
+.menu-container img {
   width: 100px;
-  display:block;
+  display: block;
   margin: 0 auto;
 }

@@ -6,19 +6,34 @@ const Restaurant = require("../models/restaurant.model")
 
 const Order = require("../models/orderMenu.model")
 const transporter = require('./../configs/nodemailer.config')
+const { populate } = require('../models/user.model')
 
 
 
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/user-login', { message: 'Desautorizado, incia sesión para continuar' })
+const checkIsUser = (req, res, next) => req.user.favRestaurants ? next() : res.render('auth/user-login', { message: 'Desautorizado, incia sesión para continuar' })
 
-router.get("/index", checkLoggedIn, (req, res) => {
-
+router.get("/index", checkLoggedIn, checkIsUser,(req, res) => {
     Restaurant.find()
         .then(data => {
             User.findById(req.user.id)
                 .populate('order')
+                .populate('favRestaurants')
                 .then(userData => res.render('user/user-index', { user: userData, key: process.env.KEY, restaurant: data }))
         })
+})
+
+router.post('/add-favourites/:id', (req, res) => {
+    const resId = req.params.id
+
+    const userId = req.user.id
+
+    const infoToUpdate = req.user
+    infoToUpdate.favRestaurants.push(resId)
+
+    User.findByIdAndUpdate(userId, infoToUpdate)
+        .then(() => res.redirect('/user/index'))
+        .catch(err => next(err))
 })
 
 
@@ -79,7 +94,7 @@ router.post('/order/:id', (req, res, next) => {
     const userId = req.user.id
     const name = req.user.name
     const email = req.user.email
-    
+
     const { starter, main, dessert, price } = req.body
     const date = new Date()
     transporter.sendMail({
@@ -99,12 +114,12 @@ router.post('/order/:id', (req, res, next) => {
             User.findByIdAndUpdate(userId, infoUpdate)
                 // .populate('order')
                 //ojo que a lo mejor hay que traer la linea 100 de vuelta paqui
-                .then(()=>{
+                .then(() => {
                     Restaurant.findById(resId)
-                        .then((restInfo)=>{
+                        .then((restInfo) => {
                             restInfo.order.push(newOrder._id)
                             Restaurant.findByIdAndUpdate(resId, restInfo)
-                            .then(() => res.redirect('/user/index'))
+                                .then(() => res.redirect('/user/index'))
                         })
                 })
                 .catch(err => console.log(err))

@@ -31,7 +31,7 @@ const userSchema = new Schema({
 
     favRestaurants: [{
         type: Schema.Types.ObjectId,
-        ref: 'Restaurant'
+        ref: 'restaurant'
     }],
 
 

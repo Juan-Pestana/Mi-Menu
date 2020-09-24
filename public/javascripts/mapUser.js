@@ -24,7 +24,7 @@ function initMap() {
                 map.setCenter(center)
                 new google.maps.Marker({ map, position: center })
             },
-            err => console.log('No se pudo acceder a la localización:', err)
+            err => next(err)
         )
     } else {
         console.log('Unable to reach geolocation module')
