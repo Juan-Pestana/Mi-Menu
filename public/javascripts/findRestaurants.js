@@ -1,7 +1,6 @@
-ApiHandler= new ApiHandler()
+ApiHandler = new ApiHandler()
 
 
- 
 
 function drawMap(restaurants) {
 
@@ -41,13 +40,11 @@ function drawMap(restaurants) {
 
 window.addEventListener('load', ()=>{
     // console.log(center)
-
-
-    document.querySelector('#search').addEventListener('click', function(event) {
-        let meters = document.querySelector('#meters').value 
+    document.querySelector('#search').addEventListener('click', function (event) {
+        let meters = document.querySelector('#meters').value
         center.distance = parseFloat(meters)
         ApiHandler.getLocalitation(center)
-                .then(response => {
+            .then(response => {
 
                     console.log(response.data)
                     let text = ''
@@ -56,27 +53,18 @@ window.addEventListener('load', ()=>{
                         <a href="/user/restaurant-detail/${elem._id}"><img src=${elem.logo}>
                         <p>${elem.name}</p></a>   
                     </li>`
-                    })
-
-                    document.querySelector('#lista').innerHTML = text
-
-
-
-    
-
-
-
-                    drawMap(response.data)
-                
-                
                 })
+
+                document.querySelector('#lista').innerHTML = text
+                drawMap(response.data)
+            })
     })
 
 })
-   
-    
 
-    
+
+
+
 
 
 

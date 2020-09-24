@@ -39,7 +39,7 @@ const restaurantSchema = new Schema({
     },
     logo: {
         type: String,
-        default:'https://res.cloudinary.com/dpflfpgcj/image/upload/v1600860303/rhdk0pcccz9ttxbmykxy.jpg'
+        default:'https://res.cloudinary.com/dpflfpgcj/image/upload/v1600955589/mbvauwc9jkb5yygdrhvy.png'
 
     },
     address: {

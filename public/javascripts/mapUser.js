@@ -4,7 +4,7 @@
 
 
 function initMap() {
-    document.querySelector('#buscar').addEventListener('click', buscar) 
+    // document.querySelector('#buscar').addEventListener('click', buscar) 
     if (navigator.geolocation) {
         const map = new google.maps.Map(document.querySelector('#restaurantsMap'), {
             zoom: 15,
