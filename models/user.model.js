@@ -19,12 +19,12 @@ const userSchema = new Schema({
         type: String,
         validate: {
             validator: function (val) {
-                let email = new RegExp("[a-zA-Z0-9_.-]+@+[a-zA-Z0-9_.-]+.+[a-zA-Z]{2,4}")
+                let email = new RegExp("[a-zA-Z0-9_.-]+@+[a-zA-Z0-9_.-]+.+[a-zA-Z]")
                 return email.test(val);
             },
             message: ` is not a valid email!`
         },
-        required: [true, 'User email required']
+        // required: [true, 'User email required']
     },
 
     phone: {

@@ -14,6 +14,7 @@ function initMap() {
         //getCurrentPosition(successCallback, failureCallback)
         navigator.geolocation.getCurrentPosition(
             position => {
+                console.log(position)
                 center = { lat: position.coords.latitude, lng: position.coords.longitude }
 
                 ApiHandler.getLocalitation(center)

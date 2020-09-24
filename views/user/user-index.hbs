@@ -15,8 +15,6 @@
                         <a class="btn btn-sm btn-dark" href="/user/logout">Cierra Sesion</a>
                     </article>
 
-
-
                     <div id="accordion" class='box'>
                         <div class="card">
                             <div class="card-header">
@@ -43,6 +41,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div id="accordion" class='box'>
                         <div class="card">
                             <div class="card-header">
@@ -64,20 +63,16 @@
                             </div>
                         </div>
                     </div>
+
                     <label for="">Distancia</label>
-                    <select class='form-control ml-2'id="meters">
+                    <select class='form-control ml-2' id="meters">
                         <option value="300">300 m</option>
                         <option value="500">500 m</option>
                         <option value="800">800 m</option>
                         <option value="1000">1000 m</option>
                     </select>
-
-
-
                 </div>
             </div>
-
-
 
 
 
@@ -87,15 +82,14 @@
 
                     <ul id="lista" class='d-flex justify-content-around mt-3'>
 
-                        {{!-- <a class="btn btn-sm btn-dark" href="/user/favoritos/{{user._id}}">ver favoritos</a> --}}
+
                     </ul>
                 </div>
 
                 <div id="restaurantsMap"></div>
                 <button class='btn btn-primary buscar' id="search">Buscar</button>
-                {{!-- <button class='btn btn-primary' id='buscar'>Buscar</button> --}}
-            </div>
 
+            </div>
         </div>
     </section>
 </main>
@@ -106,6 +100,4 @@
 <script src="/javascripts/update.userPosition.js"></script>
 <script src="/javascripts/mapUser.js"></script>
 <script src="/javascripts/findRestaurants.js"></script>
-
-
 <script src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap"></script>
