@@ -119,7 +119,7 @@ router.post('/order/:id', (req, res, next) => {
                                 .then(() => res.redirect('/user/index'))
                         })
                 })
-                .catch(err => console.log(err))
+                .catch(err => next(err))
         })
 })     
 

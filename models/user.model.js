@@ -24,7 +24,7 @@ const userSchema = new Schema({
             },
             message: ` is not a valid email!`
         },
-        // required: [true, 'User email required']
+       
     },
 
     phone: {
@@ -45,7 +45,7 @@ const userSchema = new Schema({
 }, {
     timestamps: true
 });
-// userSchema.index({ location: '2dsphere' })
+
 const User = mongoose.model("User", userSchema);
 module.exports = User
 

@@ -6,7 +6,7 @@ window.addEventListener('load', () => {
     ApiHandler.getOrders()
         .then(response => {
 
-            console.log(response)
+            // console.log(response)
             let text = ''
             response.data.forEach(elem => {
                 text += `<div class="d-flex justify-content-between" >

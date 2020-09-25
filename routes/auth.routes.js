@@ -57,6 +57,7 @@ router.post("/user-signup", (req, res, next) => {
 
 
 
+
 // USER LOGIN
 router.get("/login-user", (req, res, next) => res.render("auth/user-login", { "message": req.flash("error") }))
 
@@ -66,6 +67,7 @@ router.post("/login-user", passport.authenticate("user", {
     failureFlash: true,
     passReqToCallback: true
 }))
+
 
 
 
@@ -112,6 +114,8 @@ router.post("/restaurant-signup", (req, res, next) => {
         .then(() => res.redirect('/restaurant-login'))
         .catch(error => next(error))
 })
+
+
 
 
 

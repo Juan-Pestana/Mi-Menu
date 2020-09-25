@@ -1,6 +1,9 @@
 body {
   font-family: sans-serif;
 }
+
+
+
 //Pagina Inicio
 #showcase {
   background-color: #262b5a;
@@ -27,6 +30,10 @@ nav img{
 #logo-index{
   height: 250px;
 }
+
+
+
+
 //formulario registro
 .center-form {
   width: 40%;
@@ -46,6 +53,10 @@ nav img{
   border-radius: 5px;
   padding: 10%;
 }
+
+
+
+
 //perfil usuario
 .buscar {
   display: block;
@@ -62,6 +73,8 @@ nav img{
   color: black;
   text-decoration: none;
 }
+
+
 // -------------------------LOGOS--------------------
 .favoritos-rest a img {
   display: block;
@@ -119,6 +132,10 @@ nav img{
 .profile-user li a:hover {
   color: #262b5a;
 }
+
+
+
+
 //Detalles Restaurante
 .detail-rest {
   background-color: #262b5a;
@@ -163,9 +180,12 @@ nav img{
 .rest-info p {
   padding: 0 1em;
 }
+
+
+
+
 // Form pedido
 .pedido {
-  // border: 2px solid black;
   width: 54%;
   margin: 0 auto;
   padding: 2%;
@@ -185,9 +205,7 @@ nav img{
   margin: 0 auto;
   text-align: center;
 }
-// .blue{
-//   background-color: #262b5a;;
-// }
+
 .menu-container {
   height: 550px;
   border: 2px solid rgb(49, 48, 48);

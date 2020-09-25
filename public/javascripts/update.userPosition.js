@@ -4,7 +4,7 @@
 class ApiHandler {
     constructor() {
             this.axiosServer = axios.create({
-                    baseURL: 'http://localhost:3000/api' 
+                    baseURL: 'http://localhost:3000/api'        //  ojooooooooooo
             })
     }
 getLocalitation(data){

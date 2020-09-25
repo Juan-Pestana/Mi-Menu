@@ -9,10 +9,7 @@ const Restaurant = require("../models/restaurant.model")
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/restaurant-login', { message: 'Desautorizado, incia sesión para continuar' })
 const checkIsRestaurant = (req, res, next) => req.user.dailyMenu ? next() : res.render('auth/restaurant-login', { message: 'Desautorizado, incia sesión para continuar' })
 
-router.get("/index", checkLoggedIn, checkIsRestaurant, (req, res) => {
-
-    res.render('restaurant/restaurant-index', { user: req.user, key: process.env.KEY })
-})
+router.get("/index", checkLoggedIn, checkIsRestaurant, (req, res) => res.render('restaurant/restaurant-index', { user: req.user, key: process.env.KEY }))
 
 
 
