@@ -1,17 +1,15 @@
 ApiHandler = new ApiHandler()
 
 
-window.addEventListener('load', ()=>{
-
-    console.log('hola')
+window.addEventListener('load', () => {
 
     ApiHandler.getOrders()
-    .then(response => {
+        .then(response => {
 
-        console.log(response)
-        let text = ''
-        response.data.forEach(elem =>{
-            text += `<div class="d-flex justify-content-between" >
+            // console.log(response)
+            let text = ''
+            response.data.forEach(elem => {
+                text += `<div class="d-flex justify-content-between" >
             <div>
                 <p>primero :${elem.starter}</p>
                 <p>segundo :${elem.main}</p> 
@@ -21,14 +19,10 @@ window.addEventListener('load', ()=>{
                 <p> precio: ${elem.price}€</p>  
             </div>
         </div>
-        <hr>` 
-            
+        <hr>`
+            })
 
-        
-    })
-
-    document.querySelector('#lista').innerHTML = text
-
-})
+            document.querySelector('#lista').innerHTML = text
+        })
 
 })

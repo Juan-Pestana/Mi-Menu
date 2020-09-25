@@ -24,7 +24,7 @@ function drawMap(restaurants) {
 
                     
                 },
-                err => console.log('No se pudo acceder a la localización:', err)
+                err => document.write('No se pudo acceder a la localización:', err)
             )
 
             restaurants.forEach(elm => {
@@ -56,7 +56,7 @@ window.addEventListener('load', ()=>{
         ApiHandler.getLocalitation(center)
             .then(response => {
 
-                    console.log(response.data)
+                    // console.log(response.data)
                     let text = ''
                     response.data.forEach(elem =>{
                         text += `<li>

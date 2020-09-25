@@ -33,8 +33,8 @@ router.post("/user-signup", (req, res, next) => {
         res.render("auth/user-signup", { message: "Cumplimenta toda la información porfavor" })
         return
     }
-
-    if( email !== new RegExp("[a-zA-Z0-9_.-]+@+[a-zA-Z0-9_.-]+.+[a-zA-Z]{2,4}")){
+    let emailConfirm = new RegExp("[a-zA-Z0-9_.-]+@+[a-zA-Z0-9_.-]+.+[a-zA-Z]")
+    if (!emailConfirm.test(email)) {
         res.render("auth/user-signup", { message: "Escribe email valido" })
         return
     }
@@ -57,6 +57,7 @@ router.post("/user-signup", (req, res, next) => {
 
 
 
+
 // USER LOGIN
 router.get("/login-user", (req, res, next) => res.render("auth/user-login", { "message": req.flash("error") }))
 
@@ -66,6 +67,7 @@ router.post("/login-user", passport.authenticate("user", {
     failureFlash: true,
     passReqToCallback: true
 }))
+
 
 
 
@@ -88,10 +90,12 @@ router.post("/restaurant-signup", (req, res, next) => {
         res.render("auth/restaurant-signup", { message: "Cumplimenta toda la información porfavor" })
         return
     }
-    // if( email !== new RegExp("[a-zA-Z0-9_.-]+@+[a-zA-Z0-9_.-]+.+[a-zA-Z]{2,4}")){
-    //     res.render("auth/restaurant-signup", { message: "Escribe email valido" })
-    //     return
-    // }
+    
+    let emailConfirm = new RegExp("[a-zA-Z0-9_.-]+@+[a-zA-Z0-9_.-]+.+[a-zA-Z]")
+    if (!emailConfirm.test(email)) {
+        res.render("auth/restaurant-signup", { message: "Escribe email valido" })
+        return
+    }
 
 
     Restaurant.findOne({ username })
@@ -110,6 +114,8 @@ router.post("/restaurant-signup", (req, res, next) => {
         .then(() => res.redirect('/restaurant-login'))
         .catch(error => next(error))
 })
+
+
 
 
 

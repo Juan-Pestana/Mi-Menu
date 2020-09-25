@@ -19,12 +19,12 @@ const userSchema = new Schema({
         type: String,
         validate: {
             validator: function (val) {
-                let email = new RegExp("[a-zA-Z0-9_.-]+@+[a-zA-Z0-9_.-]+.+[a-zA-Z]{2,4}")
+                let email = new RegExp("[a-zA-Z0-9_.-]+@+[a-zA-Z0-9_.-]+.+[a-zA-Z]")
                 return email.test(val);
             },
             message: ` is not a valid email!`
         },
-        required: [true, 'User email required']
+       
     },
 
     phone: {
@@ -45,7 +45,7 @@ const userSchema = new Schema({
 }, {
     timestamps: true
 });
-// userSchema.index({ location: '2dsphere' })
+
 const User = mongoose.model("User", userSchema);
 module.exports = User
 

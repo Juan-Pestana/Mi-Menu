@@ -8,17 +8,18 @@ function initMap() {
     if (navigator.geolocation) {
         const map = new google.maps.Map(document.querySelector('#restaurantsMap'), {
             zoom: 15,
-            center: { lat: 0, lng : 0},
+            center: { lat: 0, lng: 0 },
         })
-        var center = {}
+        let center = {}
         //getCurrentPosition(successCallback, failureCallback)
         navigator.geolocation.getCurrentPosition(
             position => {
+                console.log(position)
                 center = { lat: position.coords.latitude, lng: position.coords.longitude }
 
                 ApiHandler.getLocalitation(center)
-                .then(response => drawMap(response.data))
-                // .catch(err => console.log('Hubo un error:', err))
+                    .then(response => drawMap(response.data))
+                    .catch(err => next(err))
 
 
                 map.setCenter(center)
@@ -27,7 +28,7 @@ function initMap() {
             err => next(err)
         )
     } else {
-        console.log('Unable to reach geolocation module')
+        document.write('Unable to reach geolocation module')
     }
 }
 
