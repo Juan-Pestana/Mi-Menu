@@ -50,7 +50,7 @@
 
 
         <p>Añade los platos uno a uno</p>
-        <form class='d-flex justify-content-between align-items-center bg-light'
+        <form class='d-flex flex-wrap justify-content-between align-items-center bg-light'
             action="/restaurant/update-dish/{{user._id}}" method="POST">
 
             <div class="form-group">
@@ -86,12 +86,18 @@
         </form>
 
         <form action="/restaurant/update-menu/{{user._id}}" method="POST">
-            <div class='d-flex justify-content-between align-items-center bg-light'>
-                <label for="date">Fecha</label><br>
-                <input type="date" name='date'><br><br>
+            <div class='d-flex flex-wrap justify-content-around align-items-center bg-light'>
+                <div>
+                    <label for="date">Fecha</label>
+                    <input type="date" name='date'>
+                </div>
+                
                 {{!-- ojo con la fecha meter arriba value="today" que viene del script --}}
-                <label for="price">Precio</label><br>
-                <input type="number" name="price"><br><br>
+                <div>
+                    <label for="price">Precio</label>
+                    <input type="number" name="price">
+                </div>
+                
             </div>
 
             <button class='btn btn-primary btn-block' type="submit">Actualizar</button>

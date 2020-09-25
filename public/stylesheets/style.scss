@@ -219,3 +219,19 @@ nav img{
   display: block;
   margin: 0 auto;
 }
+
+
+@media (max-width: 750px) {
+  #restaurantsMap {
+
+    width: 100%;
+
+  }
+  .info-restaurant {
+    width: 100%;
+  }
+
+  .pedido {
+    width: 100%;
+  }
+}
