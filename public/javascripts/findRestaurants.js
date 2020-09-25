@@ -32,9 +32,19 @@ function drawMap(restaurants) {
                     lat: elm.location.coordinates[1],
                     lng: elm.location.coordinates[0]
                 }
-                new google.maps.Marker({ map, position: center })
-            })
 
+                let icon = { url: "https://www.shareicon.net/data/256x256/2015/09/21/644173_pin_512x512.png", scaledSize: new google.maps.Size(35, 40) }
+
+                new google.maps.Marker({ 
+                    map, 
+                    position: center, 
+                    icon,
+                    })
+
+                
+
+            })
+            
 
             } 
 

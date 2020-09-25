@@ -4,6 +4,7 @@
 class ApiHandler {
     constructor() {
             this.axiosServer = axios.create({
+                    // baseURL: 'https://mi-menu.herokuapp.com/api',
                     baseURL: 'http://localhost:3000/api' 
             })
     }

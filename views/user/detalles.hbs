@@ -1,6 +1,6 @@
 <section class='detail-rest'>
-     <form class= 'float-right'action="/user/add-favourites/{{_id}}" method='post'>
-            <input type='submit' class="btn btn-sm btn-dark">enviar a favoritos</input>
+     <form class= 'float-right mt-3 mr-3'action="/user/add-favourites/{{_id}}" method='post'>
+            <input type='submit' class="btn btn-outline-light" value='Enviar a favoritos'></input>
         </form>
 
     <article class='info-restaurant '>
@@ -67,7 +67,7 @@
 
         <p class='mt-3 text-white text-center'>Por solo:</p>
         <input class='valuePrice' type="number" name='price' value="{{dailyMenu.price}}" readonly>
-        <button type='submit' class='btn btn-dark' id='buscar'>Pedir</button>
+        <button type='submit' class='btn btn-outline-light btn-block mt-3' id='buscar'>Pedir</button>
     </form>
 
 
